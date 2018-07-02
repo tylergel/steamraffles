@@ -1,5 +1,5 @@
 <html>
-
+<?= $this->Flash->render();  ?>
 <body class = "background">
 
     <div class="row">
@@ -67,6 +67,11 @@
                 </div>
                 <div class="row col-md-12 text-center">
                     6) You must be verified to create raffles. To do so you must have entered 10 raffles, have 500+ total hours played, and not be marked as a scammer.
+                </div>
+                <div class="row col-md-12" id = 'body-element'>
+                  <form method = "post">
+                    <button type="submit" class="waves-effect waves-light btn">Verify me!
+                  </form>
                 </div>
             </div>
         </div>

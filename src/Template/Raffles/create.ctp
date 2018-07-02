@@ -1,13 +1,14 @@
 <html>
+
 <?= $this->Flash->render() ?>
 
-<body  id = "body" style = "background: url('<?= $this->Url->image($mode . '.png'); ?>') no-repeat center center fixed;
+<body  id = "body" style = "background: url('<?= $this->Url->image($game . '.png'); ?>') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100%;">
-    
+
   <div class = "row">
     <div class="card col-md-10 offset-md-1" style = "top: 100px; z-index:-1">
       <div class = "col-md-3">
@@ -32,7 +33,15 @@
             <div class = "row">
               <div class="form-inline col-md-6">
                 <label for="entries">Entries: </label>
-                <input name = "entries" type="entries" class="form-control" placeholder = "12" id="entries">
+                <select name = "entries" class="form-control" id="entries">
+                  <option value = '5'>5</option>
+                  <option value = '10'>10</option>
+                  <option value = '50'>50</option>
+                  <option value = '100'>100</option>
+                  <option value = '300'>300</option>
+                  <option value = '500'>500</option>
+                  <option value = '1000'>1000</option>
+                </select>
               </div>
               <div class="form-inline col-md-6 float-right">
                 <label for="time">Length: </label>
@@ -54,20 +63,25 @@
             <div class = "row">
               <label for="game">Choose Game: </label>
                 <select name = "game" class="form-control" id="game">
-                  <option value = 'fortnite'>Fortnite</option>
-                  <option value = 'tf2'>Team Fortress 2</option>
-                  <option value = 'csgo'>CSGO</option>
-                  <option value = 'dota2'>Dota 2</option>
+                  <option value = ''>Select a game</option>
+                  <?php foreach($apps as $app) { echo "<option value = $app->app>$app->app</option>"; } ?>
                 </select>
             </div>
             <input type="submit" value="Create Raffle">
             <div class = "row  col-md-12">
-                <?php foreach($obj->rgDescriptions as $item) {
+                <?php foreach($obj->rgInventory as $aItem) {
+                  $curItem = $aItem->classid;
+                  $curItem .= '_';
+                  $curItem .= $aItem->instanceid;
+                  $id = $aItem->id;
+                  $item = $obj->rgDescriptions->$curItem;
+
                   if($item->tradable) {
                     $img = 'https://steamcommunity.com/economy/image/';
                     $img .= $item->icon_url;
                     $name = $item->icon_url;
-                    echo "<div id = '$name';   class = 'item col-md-2'; onclick= 'myFunction(this)'><img style = 'max-width: 100%;' src = $img></img></div>";
+                    $iname = $item->name;
+                    echo "<div id = '$id'; alt = '$iname'; name = '$name';  class = 'item col-md-2'; onclick= 'myFunction(this)'><img style = 'max-width: 100%;' data-toggle='tooltip'; data-placement='top'; title='$iname' src = $img></img></div>";
                   }
                 }
                 ?>
@@ -81,18 +95,29 @@
 </body>
 </html>
 <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 function myFunction(el) {
   $(el).toggleClass("active");
   var color = $( el ).css( "background-color" );
   var id = $(el).attr('id');
+  var iconurl = $(el).attr('name');
+  var name = $(el).attr('alt');
   var str = 'item[';
   str += id;
+  str += ', ';
+  str += name;
+  str += ', ';
+  str += iconurl;
   str += ']';
   var div = "<input type = 'hidden' id=item_";
   div += id;
   div += " name = '"+ str + "' value= '"+ id + "'>";
+
   if(color == 'rgb(0, 128, 0)') {
     $(el).append(div);
+
   }
   else {
     $("#item_" + id).remove();

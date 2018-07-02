@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<?php require ('steamauth/steamauth.php'); $color = "#F5F9FA"?>
+
+<?php  require ('steamauth/steamauth.php'); $color = "#F5F9FA"?>
 
 <html lang="en" class="no-js">
 	<head>
-             
+
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,14 +24,12 @@
 								<li>
 									<?= $this->Html->link('All Raffles',['controller' => 'Raffles', 'action' => 'index', 'all'], ['class' => 'gn-icon gn-icon-download']); ?>
 									<ul class="gn-submenu" style = "background-color: <?= $color ?>">
-										<li>
-											<?= $this->Html->link('TF2',['controller' => 'Raffles', 'action' => 'index', 'tf2'], ['class' => 'gn-icon gn-icon-download', 'style' => 'padding-left:8px']); ?>
-										</li>
-										<li>
-											<?= $this->Html->link('CSGO',['controller' => 'Raffles', 'action' => 'index', 'csgo'], ['class' => 'gn-icon gn-icon-download', 'style' => 'padding-left:8px']); ?>
-										</li>
-
-									</ul>
+										<?php foreach($apps as $app) : ?>
+											<li>
+											 <?= $this->Html->link($app->app,['controller' => 'Raffles', 'action' => 'index', $app->app], ['class' => 'gn-icon gn-icon-download', 'style' => 'padding-left:8px']); ?>
+											</li>
+										<?php endforeach ?>
+										</ul>
 								</li>
 								<li>
 									<?= $this->Html->link('Create Raffle',['controller' => 'Raffles', 'action' => 'create'], ['class' => 'gn-icon gn-icon-download']); ?>

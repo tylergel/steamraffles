@@ -91,8 +91,9 @@
               <?php
                 foreach($raffle['items'] as $raff) {
                   $name = 'https://steamcommunity.com/economy/image/';
-                  $name .= $raff['name'];
-                  echo "<div class = 'col-md-1 col-2' ;><img style = 'max-width: 100%;' src = $name></img></div>";
+                  $name .= $raff['icon'];
+                  $iname = $raff['name'];
+                  echo "<div class = 'col-md-1 col-2' ;><img style = 'max-width: 100%;' data-toggle='tooltip'; data-placement='top'; title='$iname'; src = $name></img></div>";
                 }
               ?>
             </div>
@@ -171,7 +172,9 @@
 $('.modal').modal({
     dismissible: true
 });
-
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 //call the specific div (modal)
 $('#myModal').modal('open');
 var getHTML = function ( url, callback ) {

@@ -103,20 +103,6 @@ class RafflesController extends AppController
       ->where(['steamid' => $winner])
       ->execute();
 
-      //Delete the item data from the raffle
-      $this->loadModel('Items');
-      $items = TableRegistry::get('Items');
-      $query = $items->query();
-      $query->delete()
-          ->where(['raffleid' => $id])
-          ->execute();
-
-          $this->loadModel('Comments');
-          $comments = TableRegistry::get('Comments');
-          $query = $comments->query();
-          $query->delete()
-              ->where(['raffleid' => $id])
-              ->execute();
     }
     public function index($mode = null)
     {
@@ -177,11 +163,16 @@ class RafflesController extends AppController
       $query['0']['items'] = $itemquery->toArray();
       $query['0']['entry'] = sizeof($entriesquery->toArray());
       $query['0']['entries'] = $entriesquery->toArray();
-      $chance = 1 / $query['0']['entry'];
+      $people = $query['0']['entry'];
+      if( $query['0']['entry'] == 0 ) {
+        $people = 1;
+      }
+      $chance = 1 / $people;
       $chance = number_format( $chance * 100, 2 ) . '%';
       $query['0']['chance'] = $chance;
       $time = $query['0']['timeended'];
       $query['0']['time'] = $time;
+      $rafflesteamid = $query['0']['steamid'];
       $this->set('raffle', $query['0']);
       $this->set('id', $rafid);
       $this->loadModel('Entry');
@@ -189,8 +180,20 @@ class RafflesController extends AppController
       //If the user decides to enter the raffle
       if($this->request->is('post')) {
 
-        //check if raffle is full
+
+
+
         if(isset($this->request->data()['raffleId'])) {
+          //if is his raffle
+          if($rafflesteamid == $steamid) {
+            $this->Flash->set('Sorry, you cannot enter your own raffle!', [
+                'element' => 'error'
+            ]);
+              return $this->redirect(
+                ['controller' => 'Raffles', 'action' => 'index']
+            );
+          }
+          //check if raffle is full
         if( $query['0']['entry'] >= $query['0']['ent']) {
           $this->Flash->set('This raffle is full! Check out our other raffles here. :D', [
               'element' => 'error'
@@ -282,6 +285,14 @@ class RafflesController extends AppController
     }
     }
     public function create($mode = null) {
+      $game = 'all';
+      if($mode != null) {
+        $game = $mode;
+      }
+        $this->set('game', $game);
+      $games = TableRegistry::get('Views');
+      $apps = $games->find()->all();
+      $this->set('apps', $apps);
 
       if(!isset($_SESSION['steamid'])) {
         $this->Flash->set('You must be verified to create a raffle.  Check the rules for more info.', [
@@ -327,10 +338,6 @@ class RafflesController extends AppController
             ['controller' => 'Raffles', 'action' => 'index', $mode]
         );
       }
-      $game = 'gaming';
-      if($mode != null) {
-        $game = $mode;
-      }
 
       if($this->request->is('post')) {
         include ('steamauth/userInfo.php');
@@ -353,9 +360,16 @@ class RafflesController extends AppController
         $sav = $this->Raffles->save($raffle);
         $raffid=$sav->id;
         $this->loadModel('Items');
-        foreach($data['item'] as $item) {
+
+        foreach($data['item'] as $key=>$item) {
+          $pieces = explode(", ", $key);
+          $id = $pieces['0'];
+          $name = $pieces['1'];
+          $icon = $pieces['2'];
           $raffleitem = $this->Items->newEntity();
-          $raffleitem->name = $item;
+          $raffleitem->name = $name;
+          $raffleitem->icon = $icon;
+          $raffleitem->itemid = $id;
           $raffleitem->raffleid = $raffid;
           $this->Items->save($raffleitem);
         }
@@ -380,7 +394,7 @@ class RafflesController extends AppController
         );
         }
       }
-      $this->set('game', $game);
+
     }
     public function completed() {
       //Get the 10 most recent completed raffles

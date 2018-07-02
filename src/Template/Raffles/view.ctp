@@ -80,8 +80,9 @@
           <?php
             foreach($raffle['items'] as $raffl) {
               $name = 'https://steamcommunity.com/economy/image/';
-              $name .= $raffl['name'];
-              echo "<div class = 'col-md-1 col-2' ;><img style = 'max-width: 100%;' src = $name></img></div>";
+              $name .= $raffl['icon'];
+              $iname = $raffl['name'];
+              echo "<div class = 'col-md-1 col-2'; data-toggle='tooltip'; data-placement='top'; title='$iname';><img style = 'max-width: 100%;' src = $name></img></div>";
             }
           ?>
       </div>
@@ -97,7 +98,8 @@
             $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$key."&steamids=".$ra['entry']);
             $content = json_decode($url, true);
             $ava = $content['response']['players'][0]['avatar'];
-            echo "<div class = 'col-md-1 col-2' ;><img style = 'max-width: 100%;' src = $ava></img></div>";
+            $usersname = $content['response']['players'][0]['personaname'];
+            echo "<div class = 'col-md-1 col-2';><img style = 'max-width: 100%;'  data-toggle='tooltip'; data-placement='top'; title='$usersname' src = $ava></img></div>";
           }
           ?>
       </div>
@@ -146,6 +148,9 @@
 </html>
 
 <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 $("#ads").click( function()
            {
              $.ajax({

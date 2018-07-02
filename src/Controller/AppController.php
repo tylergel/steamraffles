@@ -17,6 +17,8 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Http\ServerRequest;
+use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 /**
  * Application Controller
  *
@@ -43,7 +45,9 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-
+        $games = TableRegistry::get('Views');
+        $apps = $games->find()->all();
+        $this->set('apps', $apps);
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 
@@ -53,7 +57,10 @@ class AppController extends Controller
         		session_start();
         }
 
-        if($_SERVER['REMOTE_ADDR'] == '::1') {}
+        if($_SERVER['REMOTE_ADDR'] == '::1') {
+
+          $_SESSION['steamid'] = '76561198058670847';
+        }
         ob_start();
         include 'prod.php';
         $this->redirect = $redirecturl;

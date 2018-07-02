@@ -105,8 +105,9 @@
               <?php
                 foreach($raffle['items'] as $raffle) {
                   $name = 'https://steamcommunity.com/economy/image/';
-                  $name .= $raffle['name'];
-                  echo "<div class = 'col-md-1 col-2' ;><img style = 'max-width: 100%;' src = $name></img></div>";
+                  $name .= $raffle['icon'];
+                  $iname = $raffle['name'];
+                  echo "<div class = 'col-md-1 col-2' ;><img style = 'max-width: 100%;' data-toggle='tooltip'; data-placement='top'; title='$iname'; src = $name></img></div>";
                 }
               ?>
           </div>
@@ -150,5 +151,8 @@
 </body>
 </html>
 <script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 <?php include 'timer.js'; ?>
 </script>

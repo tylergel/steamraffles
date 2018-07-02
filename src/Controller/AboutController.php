@@ -54,7 +54,71 @@ class AboutController extends AppController
 
      }
      public function rules() {
+       if($this->request->is('post')) {
+         $steamid = $_SESSION['steamid'];
+         $key = "637D92A81FBB0C9CDCA06C1F940E8178";
+         $json = file_get_contents('http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key='.$key.'&steamids='.$steamid.'');
+         $obj = json_decode($json);
+         $denied = false;
 
+         $users = TableRegistry::get('Users');
+         $query = $users->find()->where(['steamid' => $steamid]);
+         foreach ($query as $article) {
+           $entered = $article->entered;
+         }
+         if($entered < 5) {
+           $denied = true;
+           $this->Flash->set('You have not entered enough raffles', [
+               'element' => 'error'
+           ]);
+         }
+         $communityban = $obj->players[0]->CommunityBanned;
+         $vacban = $obj->players[0]->VACBanned;
+         $economyban = $obj->players[0]->EconomyBan;
+         if($communityban != false || $vacban != false || $economyban != 'none') {
+           $denied = true;
+           $this->Flash->set('You are banned.  You cannot create raffles.', [
+               'element' => 'error'
+           ]);
+         }
+         $games = TableRegistry::get('Views');
+         $apps = $games->find()->all();
+
+         $json = file_get_contents('http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key='.$key.'&steamid='.$steamid.'&format=json');
+         $obj = json_decode($json);
+         $hastime = false;
+         foreach($obj->response->games as $game) {
+           foreach($apps as $app) {
+             if($app->appid == $game->appid);
+              $timeplayed = $game->playtime_forever;
+              if(($timeplayed) > 12000) {
+                $hastime = true;
+              }
+           }
+         }
+         if(!$hastime) {
+           $denied = true;
+           $this->Flash->set('You do not have more than 200 hours played on one of the raffling games.', [
+               'element' => 'error'
+           ]);
+         }
+         if($denied) {
+           return $this->redirect(
+             ['controller' => 'About', 'action' => 'rules']
+         );
+
+         }
+         else {
+           $query = $users->query();
+           $query->update()
+               ->set(['verified' => '1'])
+               ->where(['steamid' => $steamid])
+               ->execute();
+               $this->Flash->set('Verified!  You can now create raffles.', [
+                   'element' => 'error'
+               ]);
+         }
+       }
      }
 
 }
