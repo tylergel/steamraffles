@@ -86,12 +86,15 @@ class RafflesController extends AppController
       ->set(['inactive' => '1'])
       ->where(['id' => $id])
       ->execute();
-      $query = $raffles->query();
-      $query->update()
-      ->set(['winner' => $winner])
-      ->where(['id' => $id])
-      ->execute();
 
+      $aquery = $raffles->find()->where(['id' => $id]);
+      if(!is_null($aquery->winner)  || $aquery->winner != 0) {
+        $query = $raffles->query();
+        $query->update()
+        ->set(['winner' => $winner])
+        ->where(['id' => $id])
+        ->execute();
+      }
       //Update the users data, if he won the raffle
       $this->loadModel('Users');
       $users = TableRegistry::get('Users');
@@ -106,7 +109,9 @@ class RafflesController extends AppController
     }
     public function index($mode = null)
     {
-
+      $games = TableRegistry::get('Views');
+      $apps = $games->find()->all();
+      $this->set('apps', $apps);
       session_name('NMCORE');
       if (session_status() == PHP_SESSION_NONE) {
           session_start();

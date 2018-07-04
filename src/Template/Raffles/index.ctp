@@ -40,8 +40,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="all">All</a>
-            <a class="dropdown-item" href="tf2">TF2</a>
-            <a class="dropdown-item" href="csgo">CSGO</a>
+            <?php foreach($apps as $app) { echo "<a class='dropdown-item' href=$app->app>$app->app</a>"; } ?>
           </div>
         </div>
         <div class = "col-md-4 col-12 text-center">
