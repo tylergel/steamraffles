@@ -33,7 +33,7 @@
     <div class="card col-md-10 offset-md-1 col-10 offset-1"  style = "top: 100px;">
       <div class = "row"  style="border-style: solid; border-width: 1px;">
         <div class="col-md-6 text-center">
-          <?= $this->Html->link($raffle['title'], ['controller' => 'Raffles', 'action' => 'view', $raffle['id']]); ?>
+          <?= $this->Html->link($raffle['title'], ['controller' => 'Raffles', 'action' => 'completedview', $raffle['id']]); ?>
         </div>
         <div class="aclass col-md-6 text-center" id = <?= $raffle['id'] ?> name = <?= $raffle['time']; ?>>
           WINNER!

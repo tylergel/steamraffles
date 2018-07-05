@@ -72,11 +72,6 @@ class RafflesController extends AppController
         $winner = $query->toArray()['entry'];
       }
 
-      //Delete the entries of this raffle
-      $query = $entrys->query();
-      $query->delete()
-          ->where(['raffleid' => $id])
-          ->execute();
 
       //Set this raffle to be inactive and the winner to be the random winner chosen
       $this->loadModel('Raffles');
@@ -86,15 +81,12 @@ class RafflesController extends AppController
       ->set(['inactive' => '1'])
       ->where(['id' => $id])
       ->execute();
+      $query = $raffles->query();
+      $query->update()
+      ->set(['winner' => $winner])
+      ->where(['id' => $id])
+      ->execute();
 
-      $aquery = $raffles->find()->where(['id' => $id]);
-      if(!is_null($aquery->winner)  || $aquery->winner != 0) {
-        $query = $raffles->query();
-        $query->update()
-        ->set(['winner' => $winner])
-        ->where(['id' => $id])
-        ->execute();
-      }
       //Update the users data, if he won the raffle
       $this->loadModel('Users');
       $users = TableRegistry::get('Users');
@@ -289,6 +281,48 @@ class RafflesController extends AppController
 
     }
     }
+    public function completedview($id = null) {
+      $raffles = TableRegistry::get('Raffles');
+      $items = TableRegistry::get('Items');
+      $entry = TableRegistry::get('Entry');
+      $this->loadModel('Comments');
+      $comments = TableRegistry::get('Comments');
+      $steamid = "";
+      if(isset($_SESSION['steamid'])) {
+          $steamid = $_SESSION['steamid'];
+      }
+
+      //Find the comments of the raffle
+      $query = $raffles->find()->where(['id' => $id]);
+      $commentArray = $comments->find()->where(['raffleid' => $id])->all();
+      $this->set('commentArray', $commentArray);
+
+      //Get the itms and entries of the raffle
+      $query = $query->toArray();
+      $rafid = $query['0']['id'];
+      $itemquery = $items->find()->where(['raffleid' => $id]);
+      $entriesquery = $entry->find()->where(['raffleid' => $id]);
+
+      //Set these variables in the query array
+      $query['0']['ent'] = $query['0']['entries'];
+      $query['0']['items'] = $itemquery->toArray();
+      $query['0']['entry'] = sizeof($entriesquery->toArray());
+      $query['0']['entries'] = $entriesquery->toArray();
+      $people = $query['0']['entry'];
+      if( $query['0']['entry'] == 0 ) {
+        $people = 1;
+      }
+      $chance = 1 / $people;
+      $chance = number_format( $chance * 100, 2 ) . '%';
+      $query['0']['chance'] = $chance;
+      $time = $query['0']['timeended'];
+      $query['0']['time'] = $time;
+      $rafflesteamid = $query['0']['steamid'];
+      $this->set('raffle', $query['0']);
+      $this->set('id', $rafid);
+      $this->loadModel('Entry');
+
+    }
     public function create($mode = null) {
       $game = 'all';
       if($mode != null) {
@@ -334,7 +368,7 @@ class RafflesController extends AppController
 
       $rafs = TableRegistry::get('Raffles');
       $exists = $rafs->exists(['steamid' => $_SESSION['steamid'], 'game' => $mode, 'inactive' => 0]);
-      if($exists) {
+      if(!$exists) {
         $this->Flash->set('You already have a raffle created', [
             'element' => 'error'
         ]);
@@ -362,10 +396,19 @@ class RafflesController extends AppController
         $raffle->game = $data['game'];
         $raffle->timeended = $time;
         $raffle->inactive = 0;
+
+        $this->loadModel('Items');
+        if(empty($data['item'])) {
+          $this->Flash->set('You must choose at least one item to raffle off.', [
+              'element' => 'error'
+          ]);
+            return $this->redirect(
+
+              ['controller' => 'Raffles', 'action' => 'index', $mode]
+          );
+        }
         $sav = $this->Raffles->save($raffle);
         $raffid=$sav->id;
-        $this->loadModel('Items');
-
         foreach($data['item'] as $key=>$item) {
           $pieces = explode(", ", $key);
           $id = $pieces['0'];
