@@ -56,11 +56,15 @@
             </div>
             <div class = "row">
               <div class = "col-md-12 text-center">
-                <h4 style = "font-size:1rem;">Latest winner: <?= $ava ?></h4>
+              <h4 style = "font-size:1rem;">Latest winner: <?= $ava ?></h4>
+
               </div>
             </div>
             <div class = "col-md-12 text-center">
+              <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $lateststeamid, '1') ) ?>">
+
               <img src = <?= $latest ?> width = '50' height = '50'></img>
+            </a>
             </div>
           </div>
         </div>
@@ -78,10 +82,13 @@
               <?= $this->Html->link($raffle['title'], ['controller' => 'Raffles', 'action' => 'view', $raffle['id']]); ?>
             </div>
           </div>
-          <div class = "row no-gutters" >
+          <div class = "row" >
             <div class = "col-md-2 col-3">
               <div class = "col-md-6 col-12 no-gutters">
+                <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['steamid'], '1') ) ?>">
+
                 <img style = 'max-width: 100%;' class="card-img" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "70"; alt="Card image cap" >
+              </a>
               </div>
               <div class = "col-md-12 col-12 no-gutters" style = "font-size: 10px">
                 <?= $raffle['steamname'] ?>
@@ -124,7 +131,7 @@
               <a href = "https://go.oclasrv.com/afu.php?zoneid=1779348" target="_blank">Great ad!  We hope :)</a>
             </div>
           </div>
-          <div class = "row no-gutters" >
+          <div class = "row" >
             <div class = "col-md-3 col-4">
               <div class = "col-md-6 col-12 no-gutters">
                 <img style = 'max-width: 100%;' class="card-img" src='/webroot/favicon.ico'; class="rounded-circle"; height = "70"; alt="Card image cap" >

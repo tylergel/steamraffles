@@ -60,6 +60,8 @@ class AppController extends Controller
         if($_SERVER['REMOTE_ADDR'] == '::1') {
 
           $_SESSION['steamid'] = '76561198058670847';
+          $_SESSION['personaname'] = 'Legend';
+          $_SESSION['avatarfull'] = "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/72/72f78b4c8cc1f62323f8a33f6d53e27db57c2252.jpg";
         }
         ob_start();
         include 'prod.php';

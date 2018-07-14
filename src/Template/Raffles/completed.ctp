@@ -42,7 +42,10 @@
       <div class = "row" >
         <div class = "col-md-2 col-4">
           <div class = "col-md-6 col-12">
+            <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['steamid'], '1') ) ?>">
+
             <img style = 'max-width: 100%;' class="card-img" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "70"; alt="Card image cap" >
+          </a>
           </div>
           <div class = "col-md-12 col-12" style = "font-size: 10px">
             <?= $raffle['steamname'] ?>
@@ -54,9 +57,12 @@
                 $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$key."&steamids=".$raffle['winner']);
               	$content = json_decode($url, true);
               	$ava = $content['response']['players'][0]['avatar'];
-                $name = $content['response']['players'][0]['personaname'];
-                echo "<div class = 'row col-md-12 col-12'>Congratulations to $name</div>";
-                echo "<div class = 'row col-md-4 col-4'><img src = '$ava' width = '50' height = '50'></img></div>";
+                $name = $content['response']['players'][0]['personaname']; ?>
+                <div class = 'row col-md-12 col-12'>Congratulations to <?= $name ?></div>
+                <div class = 'row col-md-4 col-4'>
+                  <a href =   <?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['winner'], '1') ) ?>>
+              <img src = <?= $ava ?> width = '50' height = '50'></img></a></div>
+                <?php
               }
               else {
                 echo "No one has won this raffle ):";
@@ -81,7 +87,7 @@
         Timeleft: Now
       </div>
     </div>
-    <div class = "row no-gutters" >
+    <div class = "row" >
       <div class = "col-md-2 col-3" id = "body-element">
         <div class = "col-md-6 col-12 no-gutters">
           <img style = 'max-width: 100%;' class="card-img" src='/webroot/favicon.ico'; class="rounded-circle"; height = "70"; alt="Card image cap" >

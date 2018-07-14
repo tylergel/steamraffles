@@ -24,10 +24,13 @@ $cakeDescription = 'The best raffling site';
 <?= $this->Html->css('materialize.min'); ?>
 <?= $this->Html->css('component'); ?>
 <?= $this->Html->css('style'); ?>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+  rel="stylesheet"  type='text/css'>
 <link href="css/freelancer.min.css" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
 <?= $this->Html->script('modernizr.custom'); ?>
 <?= $this->Html->script('classie'); ?>
 <?= $this->Html->script('gnmenu'); ?>

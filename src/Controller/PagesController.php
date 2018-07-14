@@ -91,7 +91,17 @@ class PagesController extends AppController
               $user->number = 0;
               $user->won = 0;
               $user->entered = 0;
-              $this->Users->save($user);
+              $user->joined = date("Y-m-d");
+              $sav = $this->Users->save($user);
+
+              $this->loadModel('Userprofiles');
+              $userprofile = TableRegistry::get('Userprofiles');
+
+              $userprof = $this->Userprofiles->newEntity();
+              $userprof->ownerid = $sav;
+              $userprof->profiledescription = "I love this website";
+              $user->profiletitle = "The best website";
+              $this->Userprofiles->save($user);
         }
       }
 
@@ -108,6 +118,7 @@ class PagesController extends AppController
       $ava = $content['response']['players'][0]['avatar'];
       $this->set('latest', $ava);
       $this->set('ava', $content['response']['players'][0]['personaname']);
+      $this->set('lateststeamid', $content['response']['players'][0]['steamid']);
 
       //Get the top 3 raffles
       $query = $raffles->find()->where(['inactive' => 0])->order(['id' => 'DESC'])->limit(3)->all();

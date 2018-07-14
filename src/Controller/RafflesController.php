@@ -60,6 +60,103 @@ class RafflesController extends AppController
       }
 
     }
+
+    public function replycomment($commentid, $raffleid) {
+
+      $replys = TableRegistry::get('Replys');
+      $steamid = $_SESSION['steamid'];
+      date_default_timezone_set("UTC");
+        $time = time();
+        $exi = $replys->find()->where(['steamid' => $steamid, 'raffleid' => $raffleid])->order(['id' => 'DESC'])->first();
+        if($exi) {
+          $made = $exi->timemade;
+          $made = $made + 120;
+          $made = $time - $made;
+          if($made < 0) {
+            $this->Flash->set('You must wait 2 minutes between comments.', [
+                'element' => 'error'
+            ]);
+            return $this->redirect(
+
+              ['controller' => 'Raffles', 'action' => 'view', $raffleid]
+          );
+          }
+        }
+
+      $com = $this->request->data()['reply'];
+      if (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $com)) {
+        $this->Flash->set('No links allowed.', [
+            'element' => 'error'
+        ]);
+        return $this->redirect(
+
+          ['controller' => 'Raffles', 'action' => 'view', $raffleid]
+      );
+      }
+      $users = TableRegistry::get('Users');
+      $query = $users->find()->where(['steamid' => $steamid])->first();
+      $this->loadModel('Replys');
+      $ent = $this->Replys->newEntity();
+      $ent->steamid = $steamid;
+      $ent->parentcomment = $commentid;
+      $ent->comment = $com;
+      $ent->raffleid = $raffleid;
+      $ent->userid = $query->id;
+      $ent->timemade = $time;
+      $ent->personaname = $_SESSION['steam_personaname'];
+      $ent->avatar = $_SESSION['steam_avatar'];
+      $this->Replys->save($ent);
+
+      $commentsleft = $query->commentsleft;
+      $query = $users->query();
+      $query->update()
+          ->set(['commentsleft' => ($commentsleft + 1)])
+          ->where(['steamid' => $steamid])
+          ->execute();
+      return $this->redirect(
+
+        ['controller' => 'Raffles', 'action' => 'view', $raffleid]
+    );
+
+    }
+    public function like($id, $steamid, $owner) {
+      if($owner == $steamid) {
+        $this->Flash->set('Thanks for appreciating yourself!', [
+            'element' => 'success'
+        ]);
+          return $this->redirect(
+            ['controller' => 'Raffles', 'action' => 'view', $id]
+        );
+      }
+      if(!isset($_SESSION['steamid'])) {
+        $this->Flash->set('Sign in to like this raffle!', [
+            'element' => 'error'
+        ]);
+          return $this->redirect(
+            ['controller' => 'Raffles', 'action' => 'view', $id]
+        );
+      }
+      $this->loadModel('Rafflelikes');
+        $rafflelike = TableRegistry::get('Rafflelikes');
+        $users = TableRegistry::get('Users');
+        $query = $rafflelike->find()->where(['raffleid' => $id, 'steamid' =>$steamid])->first();
+        if(empty($query)) {
+          $likeitem = $this->Rafflelikes->newEntity();
+          $likeitem->steamid = $steamid;
+          $likeitem->raffleid = $id;
+          $this->Rafflelikes->save($likeitem);
+
+          $query = $users->find()->where(['steamid' => $owner])->first();
+          $likes = $query->likes;
+          $query = $users->query();
+          $query->update()
+              ->set(['likes' => ($likes + 1)])
+              ->where(['steamid' => $owner])
+              ->execute();
+
+        }
+
+    }
     public function delete() {
       $id = $_POST['id'];
       $this->loadModel('Entry');
@@ -99,7 +196,7 @@ class RafflesController extends AppController
       ->execute();
 
     }
-    public function index($mode = null)
+    public function index($mode = null, $me = null)
     {
       $games = TableRegistry::get('Views');
       $apps = $games->find()->all();
@@ -115,7 +212,12 @@ class RafflesController extends AppController
       //Get the raffles corresponding to the game
       if($mode == null || $mode == "all") {
         $mode = "all";
-        $query = $raffles->find()->where(['inactive' => 0])->all();
+
+        if($me != null) {
+          $query = $raffles->find()->where(['steamid' => $me])->all();
+        } else {
+          $query = $raffles->find()->where(['inactive' => 0])->all();
+        }
       }
       else {
         $query = $raffles->find()->where(['game' => $mode, 'inactive' => 0]);
@@ -134,9 +236,12 @@ class RafflesController extends AppController
     }
 
     public function view($id = null) {
+      $this->loadModel('Users');
       $raffles = TableRegistry::get('Raffles');
       $items = TableRegistry::get('Items');
       $entry = TableRegistry::get('Entry');
+      $users = TableRegistry::get('Users');
+      $replys = TableRegistry::get('Replys');
       $this->loadModel('Comments');
       $comments = TableRegistry::get('Comments');
       $steamid = "";
@@ -146,8 +251,15 @@ class RafflesController extends AppController
 
       //Find the comments of the raffle
       $query = $raffles->find()->where(['id' => $id]);
-      $commentArray = $comments->find()->where(['raffleid' => $id])->all();
-      $this->set('commentArray', $commentArray);
+      $commentArray = $comments->find()->where(['raffleid' => $id])->order(['id' => 'DESC'])->all();
+
+      $commentArray = $commentArray->toArray();
+      foreach($commentArray as $key=>$q) {
+        $replyquery = $replys->find()->where(['parentcomment' => $q['id']])->order(['id' => 'DESC'])->all();
+        $commentArray[$key]['replys'] = $replyquery->toArray();
+
+      }
+      $this->set('commentArray', (object)$commentArray);
 
       //Get the itms and entries of the raffle
       $query = $query->toArray();
@@ -206,19 +318,18 @@ class RafflesController extends AppController
 
         //Enter the user into the raffle, and set his enter stats to +1
         if(!sizeof($exi->toArray())) {
+
+          $users = TableRegistry::get('Users');
+          $query = $users->find()->where(['steamid' => $steamid])->first();
           $ent = $this->Entry->newEntity();
           $ent->entry = $steamid;
           $ent->raffleid = $raffleid;
+          $ent->userid = $query->id;
           $this->Entry->save($ent);
 
-          $this->loadModel('users');
           $entered = 0;
-          $users = TableRegistry::get('Users');
-          $query = $users->find()->where(['steamid' => $steamid]);
-          foreach ($query as $article) {
-            $entered = $article->entered;
+          $entered = $query->entered;
 
-          }
           $query = $users->query();
           $query->update()
               ->set(['entered' => ($entered + 1)])
@@ -239,13 +350,15 @@ class RafflesController extends AppController
       //If the user decides to leave a comment instead, add that to the table.
       else {
         $steamid = $_SESSION['steamid'];
-
-          $exi = $comments->find()->where(['steamid' => $steamid, 'raffleid' => $id]);
+        date_default_timezone_set("UTC");
+          $time = time();
+          $exi = $comments->find()->where(['steamid' => $steamid, 'raffleid' => $id])->order(['id' => 'DESC'])->first();
           if($exi) {
-
-            $amount = sizeof($exi->toArray());
-            if($amount > 1) {
-              $this->Flash->set('You have left too many comments.', [
+            $made = $exi->timemade;
+            $made = $made + 120;
+            $made = $time - $made;
+            if($made < 0) {
+              $this->Flash->set('You must wait 2 minutes between comments.', [
                   'element' => 'error'
               ]);
               return $this->redirect(
@@ -265,14 +378,23 @@ class RafflesController extends AppController
             ['controller' => 'Raffles', 'action' => 'view', $id]
         );
         }
+        $users = TableRegistry::get('Users');
+        $query = $users->find()->where(['steamid' => $steamid])->first();
         $ent = $this->Comments->newEntity();
         $ent->steamid = $steamid;
         $ent->comment = $com;
         $ent->raffleid = $id;
+        $ent->userid = $query->id;
+        $ent->timemade = $time;
         $ent->personaname = $_SESSION['steam_personaname'];
         $ent->avatar = $_SESSION['steam_avatar'];
         $this->Comments->save($ent);
-
+        $commentsleft = $query->commentsleft;
+        $query = $users->query();
+        $query->update()
+            ->set(['commentsleft' => ($commentsleft + 1)])
+            ->where(['steamid' => $steamid])
+            ->execute();
         return $this->redirect(
 
           ['controller' => 'Raffles', 'action' => 'view', $id]
@@ -323,6 +445,16 @@ class RafflesController extends AppController
       $this->loadModel('Entry');
 
     }
+
+    public function deletecomment() {
+      if($this->request->is('post')) {
+        $data = $this->request->data['id'];
+      $this->loadModel('Comments');
+      $comments = TableRegistry::get('Comments');
+      $entity = $this->Comments->get($data);
+      $result = $this->Comments->delete($entity);
+    }
+    }
     public function create($mode = null) {
       $game = 'all';
       if($mode != null) {
@@ -352,10 +484,11 @@ class RafflesController extends AppController
       //Verify user
       $nor = 0;
       $users = TableRegistry::get('Users');
-      $query = $users->find()->where(['steamid' => $_SESSION['steamid']]);
-      foreach ($query as $article) {
-        $nor = $article->number;
-        if(!$article->verified) {
+      $query = $users->find()->where(['steamid' => $_SESSION['steamid']])->first();
+      $userid = $query->id;
+
+        $nor = $query->number;
+        if(!$query->verified) {
           $this->Flash->set('You must be verified to create a raffle.  Check the rules for more info.', [
               'element' => 'error'
           ]);
@@ -364,11 +497,11 @@ class RafflesController extends AppController
               ['controller' => 'Raffles', 'action' => 'index', $mode]
           );
         }
-      }
+
 
       $rafs = TableRegistry::get('Raffles');
       $exists = $rafs->exists(['steamid' => $_SESSION['steamid'], 'game' => $mode, 'inactive' => 0]);
-      if(!$exists) {
+      if($exists) {
         $this->Flash->set('You already have a raffle created', [
             'element' => 'error'
         ]);
@@ -388,6 +521,7 @@ class RafflesController extends AppController
         $time = time() +$data['time'];
         $raffle = $this->Raffles->newEntity();
         $raffle->steamid = $steamid;
+        $raffle->userid = $userid;
         $raffle->avatar = $avatar;
         $raffle->steamname = $steamname;
         $raffle->title = $data['title'];

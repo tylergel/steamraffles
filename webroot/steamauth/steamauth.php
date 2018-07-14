@@ -5,7 +5,7 @@ ob_start();
 
 function logoutbutton() {
 
-	echo "<form action='' method='get'><button name='logout' type='submit'>Logout</button></form>"; //logout button
+	echo "<form action='' method='get'><button name='logout' style = 'padding:0px; border:0; background-color: white; height: 0px' type='submit'>Logout</button></form>"; //logout button
 }
 
 function loginbutton() {

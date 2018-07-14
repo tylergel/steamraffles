@@ -44,9 +44,14 @@
                 $ava = $content['response']['players'][0]['avatar'];
                 $persona = $content['response']['players'][0]['personaname'];
                 $number = $top['number'];
-
-                echo "<div class = col-md-3 col-12><img src = '$ava' width = '100' height = '100'></img></div>";
-                echo "<div class = col-md-8 col-12>$persona has created $number raffles</div>";
+                ?>
+                <div class = 'col-md-3 col-12'>
+              <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $top['id']) ) ?>">
+                <img src = '<?= $ava ?>' width = '100' height = '100'>
+                </a>
+                </div>
+                <div class = 'col-md-8 col-12'> <?= $persona ?> has created <?= $number ?> raffles</div>
+                <?php
               }
             ?>
           </div>
@@ -68,7 +73,7 @@
         Timeleft: Now
       </div>
     </div>
-    <div class = "row no-gutters" >
+    <div class = "row" >
       <div class = "col-md-2 col-3" id = "body-element">
         <div class = "col-md-6 col-12 no-gutters">
           <img style = 'max-width: 100%;' class="card-img" src='/webroot/favicon.ico'; class="rounded-circle"; height = "70"; alt="Card image cap" >
@@ -88,5 +93,3 @@
 
 </body>
 </html>
-
-

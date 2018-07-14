@@ -23,10 +23,10 @@
 							<ul class="gn-menu" style = "background-color: <?= $color ?>">
 								<li>
 									<?= $this->Html->link('All Raffles',['controller' => 'Raffles', 'action' => 'index', 'all'], ['class' => 'gn-icon gn-icon-download']); ?>
-									<ul class="gn-submenu" style = "background-color: <?= $color ?>">
+									<ul class="" style = "background-color: <?= $color ?>">
 										<?php foreach($apps as $app) : ?>
 											<li>
-											 <?= $this->Html->link($app->app,['controller' => 'Raffles', 'action' => 'index', $app->app], ['class' => 'gn-icon gn-icon-download', 'style' => 'padding-left:8px']); ?>
+											 <?= $this->Html->link($app->app,['controller' => 'Raffles', 'action' => 'index', $app->app], ['style' => 'padding-left:58px']); ?>
 											</li>
 										<?php endforeach ?>
 										</ul>
@@ -54,18 +54,44 @@
 					<?php if(isset($_SESSION['steamid'])) : ?>
 					<?php include ('steamauth/userInfo.php'); ?>
 								<li>
-									<div class="dropdown">
-										<?=  $this->Html->image($_SESSION['steam_avatarfull'], ['width' => '50px']); ?>
-										<div class="dropdown-content">
-								      <?= logoutbutton(); ?>
-								    </div>
+									<div class="btn-group">
+									  <?=  $this->Html->image($_SESSION['steam_avatarfull'], ['class' => 'dropdown-toggle', 'type' => 'button', 'data-toggle' => 'dropdown', 'height' => '50px', 'width' => '50px', 'right' => '0px']); ?>
+									  <div class="dropdown-menu" style = "height: 200px !important; font-size: 12px">
+									    <a class="dropdown-item" style = "height: 50px !important; font-size: 12px" href="<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $_SESSION['steamid'], '1') ) ?>">My profile</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" style = "height: 50px !important; font-size: 12px" href="<?= $this->Url->build( array('controller' => 'raffles', 'action' => 'index', 'all', $_SESSION['steamid']) ) ?>">My raffles</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" style = "height: 50px !important; font-size: 12px" href="#"><?= logoutbutton() ?></a>
+
+									  </div>
 									</div>
+
+
+
 								</li>
   				<?php endif;  ?>
 			</ul>
 		</div>
 
 		<script>
+		$("#picture").click( function() {
+    document.getElementById("myDropdown").classList.toggle("show");
+});
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
 	</body>
