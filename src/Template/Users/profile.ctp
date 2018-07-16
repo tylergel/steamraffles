@@ -1,7 +1,7 @@
 <html>
 <body   style = "background-color: #18bc9c">
 
-      <div class = "row col-10 offset-1 "  style = "margin-top: 100px;">
+      <div class = "container col-md-10 offset-md-1 col-12"  style = "margin-top: 100px;">
 
     <div class = "row">
     <div class="row col-md-10 user-menu-container square">

@@ -8,21 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Raffles website</title>
   </head>
 
   <!-- Accept terms module -->
   <?php if($notaccepted) : ?>
-    <div id="myModal" class="modal col-md-8 offset-md-2">
-      <div class="modal-content" style = "overflow-y: scroll; max-height: 60%">
-        <h4>Please accept our privacy policy to continue using the site.</h4>
+      <div id="myModal" class="modal col-md-8 offset-md-2"  style = "background-color: white; ">
+        <div class="modal-header">
+        <a href="#" class="js-close-modal">Close</a>
+        </div>
+        <div class="modal-content">
         <p id = 'regTitle'>Loading privacy policy...</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="js-close-modal">Close</a>
+          <form method = "post"><input type = "submit" value = "I agree" name = "I agree"></form>
+        </div>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        <form method = "post"><input type = "submit" value = "I agree" name = "I agree"></form>
-      </div>
-    </div>
+
+
   <?php endif ?>
 
   <body>
@@ -183,7 +186,9 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
 //call the specific div (modal)
-$('#myModal').modal('open');
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
 var getHTML = function ( url, callback ) {
 
 	// Feature detection
@@ -207,6 +212,10 @@ var getHTML = function ( url, callback ) {
 };
 getHTML( 'privacies.html', function (response) {
 	$("#regTitle").html(response.documentElement.innerHTML);
+});
+
+$(".js-close-modal").click(function(){
+$('#myModal').modal('toggle');
 });
 <?php include 'timer.js'; ?>
 </script>

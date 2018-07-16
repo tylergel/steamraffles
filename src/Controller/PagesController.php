@@ -97,11 +97,11 @@ class PagesController extends AppController
               $this->loadModel('Userprofiles');
               $userprofile = TableRegistry::get('Userprofiles');
 
-              $userprof = $this->Userprofiles->newEntity();
-              $userprof->ownerid = $sav;
+              $userprof = $userprofile->newEntity();
+              $userprof->ownerid = $sav->id;
               $userprof->profiledescription = "I love this website";
-              $user->profiletitle = "The best website";
-              $this->Userprofiles->save($user);
+              $userprof->profiletitle = "The best website";
+              $userprofile->save($userprof);
         }
       }
 

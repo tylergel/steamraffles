@@ -2,7 +2,7 @@
 <body style = "background-color: #18bc9c">
 <?= $this->Flash->render(); ?>
 <div class = "row" >
-  <div class="card col-md-10 offset-md-1 col-10 offset-1"  style = "top: 65px; overflow: hidden">
+  <div class="card col-md-10 offset-md-1 col-12"  style = "top: 65px; overflow: hidden">
 <center>
 <script type="text/javascript">
   ( function() {
@@ -18,11 +18,11 @@
 </div>
 </div>
 <div class = "row" >
-  <div id = "body-element" class="card col-md-6 offset-md-3 col-10 offset-1"  style = "top: 65px; overflow: hidden; background-color: red">
+  <div id = "body-element" class="card col-md-6 offset-md-3 col-12"  style = "top: 65px; overflow: hidden; background-color: red">
 <a class="row waves-effect waves-light btn" href = "http://zipansion.com/1p8Ao" target="_blank">Steamraffle sponsored advertisements</a>
 </div>
 </div>
-<div class = "row panel col-md-10 offset-md-1 col-10 offset-1" style = "background-color: white; top: 100px">
+<div class = "row panel col-md-10 offset-md-1 col-12" style = "background-color: white; top: 100px">
   <div class="panel-body col-md-12 col-12" >
         <div class="col-md-12 text-center border-bottom border-dark">
           <h5>
@@ -168,7 +168,7 @@
                               <li class="media col-md-11 offset-md-1">
                                 <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $reply->userid) ) ?>">
 
-                                      <img src="<?= $img ?>" alt="" class="img-circle">
+                                      <img src="<?= $replyimg ?>" alt="" class="img-circle">
                                   </a>
                                   <div  class="media-body">
                                           <small class="row pull-right text-muted"><?= $replytime ?> minutes ago</small>
