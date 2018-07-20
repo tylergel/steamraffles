@@ -87,6 +87,7 @@ class PagesController extends AppController
         if(!$query) {
               $user = $this->Users->newEntity();
               $user->steamid = $_SESSION['steamid'];
+              $user->avatar = $_SESSION['avatarfull'];
               $user->verified = 0;
               $user->number = 0;
               $user->won = 0;

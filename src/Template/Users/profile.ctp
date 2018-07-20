@@ -79,8 +79,10 @@
                 Stats
             </h3>
             <p class = "text-center">Rank: #<?= $rank ?></p>
-            <p class = "text-center">Raffles entered: <?= $userdata['entered'] ?></p>
-            <p class = "text-center">Raffles won: <?= $userdata['won'] ?></p>
+            <p class = "text-center">Total Score: <?= $userdata['score'] ?></p>
+            <p class = "text-center">Referral Score: <?= $userdata['toclaim'] * 2 ?></p>
+            <p class = "text-center">Raffles Entered: <?= $userdata['entered'] ?></p>
+            <p class = "text-center">Raffles Won: <?= $userdata['won'] ?></p>
             <p class = "text-center">Comments: <?= $userdata['commentsleft'] ?></p>
 
           </div>

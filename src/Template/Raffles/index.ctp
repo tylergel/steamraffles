@@ -40,7 +40,9 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="all">All</a>
-            <?php foreach($apps as $app) { echo "<a class='dropdown-item' href=$app->app>$app->app</a>"; } ?>
+            <?php foreach($apps as $app) { ?>
+              <a class='dropdown-item' href= <?= $this->Url->build( array('controller' => 'Raffles', 'action' => 'index', $app->app) ) ?>><?=$app->app?></a> 
+            <?php } ?>
           </div>
         </h5>
         <h5 class = "col-md-4 col-12 text-center">

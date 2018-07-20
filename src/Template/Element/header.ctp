@@ -41,8 +41,15 @@
 									<?= $this->Html->link('Top Rafflers',['controller' => 'Raffles', 'action' => 'top'], ['class' => 'gn-icon gn-icon-download']); ?>
 								</li>
 								<li>
+									<?= $this->Html->link('Refer a friend',['controller' => 'Users', 'action' => 'rewards'], ['class' => 'gn-icon gn-icon-download']); ?>
+								</li>
+								<li>
+									<?= $this->Html->link('Donate',['controller' => 'Users', 'action' => 'donations'], ['class' => 'gn-icon gn-icon-download']); ?>
+								</li>
+								<li>
 									<?= $this->Html->link('Rules',['controller' => 'About', 'action' => 'rules'], ['class' => 'gn-icon gn-icon-download']); ?>
 								</li>
+
 							</ul>
 						</div>
 					</nav>

@@ -587,14 +587,20 @@ class RafflesController extends AppController
       $key = "637D92A81FBB0C9CDCA06C1F940E8178";
       $this->set('key', $key);
     }
-    public function top() {
+    public function top($data = null) {
       //Get the top 10 people who have created raffles
+      if($data == null) {
+        $data = 'score';
+      }
       $this->loadModel('Users');
       $users = TableRegistry::get('Users');
-      $query = $users->find()->order(['number' => 'DESC'])->limit(10)->all();
+      $query = $users->find()->order([$data => 'DESC'])->limit(10)->all();
       $arr = $query->toArray();
+      
       $this->set('toparr', $arr);
       $key = "637D92A81FBB0C9CDCA06C1F940E8178";
       $this->set('key', $key);
+
+      $this->set('data', $data);
     }
 }
