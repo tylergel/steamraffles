@@ -47,6 +47,11 @@
               <div class = "col-md-12 text-center">
                 <a href = <?= $this->Url->build(['controller' => 'raffles','action' => 'index']);?> class="waves-effect waves-light btn">View all raffles</a>
               </div>
+              <p>
+              <div class = "col-md-12 text-center">
+                <a href = <?= $this->Url->build(['controller' => 'Abouts','action' => 'sponsors']);?> class="waves-effect waves-light btn">View our sponsors</a>
+              </div>
+            </p>
           </div>
           <div class = "col-md-6">
             <div class = "row">
@@ -57,6 +62,7 @@
             <div class = "col-md-12 text-center">
               <a href =  "https://steamcommunity.com/groups/gamegifts" class="btn btn-danger">Steam group</a>
             </div>
+
             <div class = "row">
               <div class = "col-md-12 text-center">
               <h4 style = "font-size:1rem;">Latest winner: <?= $ava ?></h4>
@@ -144,7 +150,7 @@
               </div>
             </div>
             <div class = "row col-md-9 col-8  no-gutters">
-              <a class="waves-effect waves-light btn pull-right" href = "https://go.oclasrv.com/afu.php?zoneid=1779348" target="_blank">Cool offer! </a>
+              <a class="waves-effect waves-light btn pull-right" href = "https://www.anrdoezrs.net/click-8847778-13396692" target="_blank">Cool offer! </a>
             </div>
           </div>
         </div>

@@ -1,34 +1,18 @@
 <html>
 <body style = "background-color: #18bc9c">
 <?= $this->Flash->render(); ?>
-<div class = "row" >
-  <div class="card col-md-10 offset-md-1 col-12"  style = "top: 65px; overflow: hidden">
-<center>
-<script type="text/javascript">
-  ( function() {
-    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-    var unit = {"calltype":"async[2]","publisher":"tylergel","width":320,"height":50,"sid":"Chitika Default"};
-    var placement_id = window.CHITIKA.units.length;
-    window.CHITIKA.units.push(unit);
-    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-}());
-</script>
-<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-</center>
+<div class = "container" style = " margin-top:100px;">
+  <a target = "_blank" href="https://www.dpbolvw.net/click-8847778-13396680" >
+  <img style = "width: 100%;" src="https://www.ftjcfx.com/image-8847778-13396680" alt=""  border="0"/></a>
 </div>
-</div>
-<div class = "row" >
-  <div id = "body-element" class="card col-md-6 offset-md-3 col-12"  style = "top: 65px; overflow: hidden; background-color: red">
-<a class="row waves-effect waves-light btn" href = "http://zipansion.com/1p8Ao" target="_blank">Steamraffle sponsored advertisements</a>
-</div>
-</div>
-<div class = "row panel col-md-10 offset-md-1 col-12" style = "background-color: white; top: 100px">
+<div class = "row panel col-md-10 offset-md-1 col-12" style = "background-color: white; top: 10px">
   <div class="panel-body col-md-12 col-12" >
-        <div class="col-md-12 text-center border-bottom border-dark">
+      <div class="col-md-12 text-center border-bottom border-dark">
           <h5>
             <?= $raffle['title'] ?>
           </h5>
       </div>
+
       <div class = "row  border-bottom border-dark" >
         <div class="col-md-2 offset-md-2 col-4 text-center" >
           <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['userid']) ) ?>">
@@ -111,7 +95,7 @@
 </div>
 </div>
 
-            <div class="panel panel-info col-md-10 offset-md-1 col-10 offset-1" style = " background-color: white; margin-top: 100px">
+            <div class="panel panel-info col-md-10 offset-md-1 col-10 offset-1" style = " background-color: white; margin-top: 10px">
               <div class="panel-heading">
                     Comments
                 </div>

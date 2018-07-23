@@ -88,7 +88,7 @@
            $content = json_decode($url, true);
            $time = time() - $content['response']['players'][0]['timecreated'];
            $time2 = time() - $content['response']['players'][0]['lastlogoff'];
-           if($time < 2592000 || $time2 < 604800) {
+           if($time < 2592000 || $time2 > 604800) {
              $totalArray[$k]['alt'] = true;
              if($tot['website'] == '1') {
                $total = $total - 1;

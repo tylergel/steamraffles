@@ -53,6 +53,11 @@ class AboutController extends AppController
      public function privacies() {
 
      }
+
+     public function sponsors() {
+
+     }
+
      public function rules() {
        if($this->request->is('post')) {
          $steamid = $_SESSION['steamid'];

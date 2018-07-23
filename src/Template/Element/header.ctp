@@ -14,15 +14,17 @@
 
 	<body>
 
-		<div class="container" style = "position: relative; z-index: 5">
+		<div class="container" style = "position: relative; z-index: 5; ">
 			<ul id="gn-menu"  class="gn-menu-main" style = "background-color: <?= $color ?>" >
 				<li class="gn-trigger" >
 					<a class="gn-icon gn-icon-menu"><span>Menu</span></a>
 					<nav class="gn-menu-wrapper" style = "background-color: <?= $color ?>">
 						<div class="gn-scroller">
-							<ul class="gn-menu" style = "background-color: <?= $color ?>">
+							<ul class="gn-menu" style = " background-color: <?= $color ?>">
+
 								<li>
-									<?= $this->Html->link('All Raffles',['controller' => 'Raffles', 'action' => 'index', 'all'], ['class' => 'gn-icon gn-icon-download']); ?>
+									<i class="fa fa-money fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('All Raffles',['controller' => 'Raffles', 'action' => 'index', 'all'], ['style' => 'font-size: 20px']); ?>
+									<!--
 									<ul class="" style = "background-color: <?= $color ?>">
 										<?php foreach($apps as $app) : ?>
 											<li>
@@ -30,24 +32,29 @@
 											</li>
 										<?php endforeach ?>
 										</ul>
+										-->
+								</li>
+
+								<li>
+									<i class="fa fa-plus fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Create Raffle',['controller' => 'Raffles', 'action' => 'create']); ?>
 								</li>
 								<li>
-									<?= $this->Html->link('Create Raffle',['controller' => 'Raffles', 'action' => 'create'], ['class' => 'gn-icon gn-icon-download']); ?>
+									<i class="fa fa-check fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Completed Raffles',['controller' => 'Raffles', 'action' => 'completed']); ?>
 								</li>
 								<li>
-									<?= $this->Html->link('Completed Raffles',['controller' => 'Raffles', 'action' => 'completed'], ['class' => 'gn-icon gn-icon-download']); ?>
+									<i class="fa fa-star fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Top Rafflers',['controller' => 'Raffles', 'action' => 'top']); ?>
 								</li>
 								<li>
-									<?= $this->Html->link('Top Rafflers',['controller' => 'Raffles', 'action' => 'top'], ['class' => 'gn-icon gn-icon-download']); ?>
+									<i class="fa fa-trophy fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Refer a friend',['controller' => 'Users', 'action' => 'rewards']); ?>
 								</li>
 								<li>
-									<?= $this->Html->link('Refer a friend',['controller' => 'Users', 'action' => 'rewards'], ['class' => 'gn-icon gn-icon-download']); ?>
+									<i class="fa fa-heart fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Donate',['controller' => 'Users', 'action' => 'donations']); ?>
 								</li>
 								<li>
-									<?= $this->Html->link('Donate',['controller' => 'Users', 'action' => 'donations'], ['class' => 'gn-icon gn-icon-download']); ?>
+									<i class="fa fa-birthday-cake fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Sponsors',['controller' => 'About', 'action' => 'sponsors']); ?>
 								</li>
 								<li>
-									<?= $this->Html->link('Rules',['controller' => 'About', 'action' => 'rules'], ['class' => 'gn-icon gn-icon-download']); ?>
+									<i class="fa fa-info-circle fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Rules',['controller' => 'About', 'action' => 'rules']); ?>
 								</li>
 
 							</ul>

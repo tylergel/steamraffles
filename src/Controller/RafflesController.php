@@ -49,6 +49,8 @@ class RafflesController extends AppController
       //Redirect the user if they have not accepted the privacy policy
       $this->loadComponent('RequestHandler');
       $this->loadComponent('Flash');
+      $this->loadModel('Users');
+
       if(isset($_SESSION['steamid'])) {
         $users = TableRegistry::get('Users');
         $query = $users->find()->where(['steamid' => $_SESSION['steamid']])->first();
@@ -588,19 +590,19 @@ class RafflesController extends AppController
       $this->set('key', $key);
     }
     public function top($data = null) {
-      //Get the top 10 people who have created raffles
+      $users = TableRegistry::get('Users');
+      //Get the top 10 people who have the designated paramater
       if($data == null) {
         $data = 'score';
       }
-      $this->loadModel('Users');
-      $users = TableRegistry::get('Users');
+      $this->set('data', $data);
+
       $query = $users->find()->order([$data => 'DESC'])->limit(10)->all();
       $arr = $query->toArray();
-      
       $this->set('toparr', $arr);
+
       $key = "637D92A81FBB0C9CDCA06C1F940E8178";
       $this->set('key', $key);
 
-      $this->set('data', $data);
     }
 }

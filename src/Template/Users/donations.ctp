@@ -1,6 +1,10 @@
 <html>
 <body style = "background-color: #18bc9c">
-<div class="panel panel-default col-md-10 offset-1" style = "background-color: white; margin-top: 100px">
+  <div class = "container" style = " margin-top:100px;">
+    <a target = "_blank" href="https://www.dpbolvw.net/click-8847778-13396680" >
+    <img style = "width: 100%;" src="https://www.ftjcfx.com/image-8847778-13396680" alt=""  border="0"/></a>
+  </div>
+<div class="panel panel-default col-md-10 offset-1" style = "background-color: white; margin-top: 10px">
   <div class = "panel-heading text-center"><h1>Show your love by donating</h1></div>
   <div class = "panel-body">
       <div  class = "col-md-12 text-center" >
@@ -13,7 +17,7 @@
 </div>
 <div class="panel panel-default col-md-10 offset-1" style = "background-color: white; margin-top: 20px">
   <div  class = "panel-heading text-center"><h1>Recent Donators</h1></div>
-  
+
   <br>
   <div class="row panel-body ">
     <?php foreach($donators as $don) :
