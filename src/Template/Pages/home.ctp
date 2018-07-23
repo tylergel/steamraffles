@@ -49,7 +49,7 @@
               </div>
               <p>
               <div class = "col-md-12 text-center">
-                <a href = <?= $this->Url->build(['controller' => 'Abouts','action' => 'sponsors']);?> class="waves-effect waves-light btn">View our sponsors</a>
+                <a href = <?= $this->Url->build(['controller' => 'About','action' => 'sponsors']);?> class="waves-effect waves-light btn">View our sponsors</a>
               </div>
             </p>
           </div>
@@ -135,25 +135,23 @@
 
         <!-- Ad -->
         <div class="card col-md-12" style = "background-color:#DEF2F1; ">
-          <div class = "row" >
-            <div class="col-md-10 no-gutters text-center" >
-              <a href = "https://go.oclasrv.com/afu.php?zoneid=1779348" target="_blank">Great ad!  We hope :)</a>
+          <div class = "card-header text-center">
+            <p>Steamraffles advertisement</p>
+          </div>
+          <div class = "row card-body">
+            <div class = "col-md-4">
+              <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=17147-20&marketplace=amazon&region=US&placement=B01LXC1QL0&asins=B01LXC1QL0&linkId=6e5d8ac7887f76c5cd2827a85ac44c5f&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+            </div>
+            <div id = "hide-mobile" class = "col-md-4">
+              <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=17147-20&marketplace=amazon&region=US&placement=B07DN8YWLW&asins=B07DN8YWLW&linkId=441e933221b61046a6c41de321680ef3&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+            </div>
+            <div id = "hide-mobile" class = "col-md-4">
+              <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=17147-20&marketplace=amazon&region=US&placement=B016MAK38U&asins=B016MAK38U&linkId=e40e0a0bf316376f516531d437631900&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
             </div>
           </div>
-          <div class = "row" >
-            <div class = "col-md-3 col-4">
-              <div class = "col-md-6 col-12 no-gutters">
-                <img style = 'max-width: 100%;' class="card-img" src='/webroot/favicon.ico'; class="rounded-circle"; height = "70"; alt="Card image cap" >
-              </div>
-              <div class = "col-md-12 col-12 no-gutters" style = "font-size: 10px">
-                Steamraffles Advertisement
-              </div>
-            </div>
-            <div class = "row col-md-9 col-8  no-gutters">
-              <a class="waves-effect waves-light btn pull-right" href = "https://www.anrdoezrs.net/click-8847778-13396692" target="_blank">Cool offer! </a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
