@@ -8,10 +8,7 @@
     -o-background-size: cover;
     background-size: cover;
     height: 100%;  background-attachment: fixed;">
-    <div class = "container" style = " margin-top:100px;">
-      <a target = "_blank" href="https://www.dpbolvw.net/click-8847778-13396680" >
-      <img style = "width: 100%;" src="https://www.ftjcfx.com/image-8847778-13396680" alt=""  border="0"/></a>
-    </div>
+    
   <div class = "row" >
     <div id = "body-element" class="card col-md-10 offset-md-1 col-10 offset-1"  style = "top: 10px;">
       <div class="row card-title col-md-10" >
@@ -107,7 +104,26 @@
     </div>
   <?php endforeach;  ?>
 
-
+  <!-- Ad -->
+  <div id = "amazon-ad" class="card col-md-10 offset-md-1 col-10 offset-1" style = "top: 20px ;background-color:white; ">
+    <div class = "card-header text-center">
+      <p>Steamraffles advertisement</p>
+    </div>
+    <div class = "row card-body">
+      <div class = "col-md-4">
+        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=17147-20&marketplace=amazon&region=US&placement=B01LXC1QL0&asins=B01LXC1QL0&linkId=6e5d8ac7887f76c5cd2827a85ac44c5f&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
+  </iframe>
+      </div>
+      <div id = "hide-mobile" class = "col-md-4">
+        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=17147-20&marketplace=amazon&region=US&placement=B07DN8YWLW&asins=B07DN8YWLW&linkId=441e933221b61046a6c41de321680ef3&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
+  </iframe>
+      </div>
+      <div id = "hide-mobile" class = "col-md-4">
+        <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=17147-20&marketplace=amazon&region=US&placement=B016MAK38U&asins=B016MAK38U&linkId=e40e0a0bf316376f516531d437631900&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
+  </iframe>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
 <script>
