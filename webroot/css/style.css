@@ -298,6 +298,10 @@ margin-right: 7px;
 @media screen and (max-width: 600px) {
   #hide-mobile {
     visibility: hidden;
-    
+
+  }
+  #amazon-ad {
+    height: 400px;
+
   }
 }

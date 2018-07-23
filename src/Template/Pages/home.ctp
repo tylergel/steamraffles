@@ -134,7 +134,7 @@
         <?php endforeach; ?>
 
         <!-- Ad -->
-        <div class="card col-md-12" style = "background-color:#DEF2F1; ">
+        <div id = "amazon-ad" class="card col-md-12" style = "background-color:#DEF2F1; ">
           <div class = "card-header text-center">
             <p>Steamraffles advertisement</p>
           </div>
