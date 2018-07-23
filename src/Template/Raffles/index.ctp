@@ -8,7 +8,10 @@
     -o-background-size: cover;
     background-size: cover;
     height: 100%;  background-attachment: fixed;">
-    
+    <div class = "container" style = " margin-top:100px;">
+      <a target = "_blank" href="https://www.dpbolvw.net/click-8847778-13396680" >
+      <img style = "width: 100%;" src="https://www.ftjcfx.com/image-8847778-13396680" alt=""  border="0"/></a>
+    </div>
   <div class = "row" >
     <div id = "body-element" class="card col-md-10 offset-md-1 col-10 offset-1"  style = "top: 10px;">
       <div class="row card-title col-md-10" >

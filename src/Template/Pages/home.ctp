@@ -158,11 +158,23 @@
     <!-- About Section -->
     <section class="text-white mb-0" id="about" style =" background-color:#18bc9c!important">
       <div class="container">
-        <h2 class="text-center text-uppercase text-white">How it works</h2>
-        <hr class="star-light mb-5">
+        <h2 class="text-center text-uppercase text-white">News</h2>
         <div class="row">
           <div class="col-lg-12 text-center">
-            <p class="lead">Choose the game of your choice, and enter the raffle.  All raffles are free to enter, and can be viewed here.  Upon winning, you will receive your prize in the way specified for that game.</p>
+            <p class="lead">Design changes are being worked on, especially on mobile. Post your ideas for changes on our steamgroup.  Lastly, we will be looking for moderators shortly.</p>
+            <small>Posted July 23rd</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="lead">User profiles have been added.  See how you stack up against others in our community!</p>
+            <small>Posted July 23rd</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="lead">Daily raffles are now guaranteed.  Enter the raffle, and a winner will be randomly chosen.</p>
+            <small>Posted July 23rd</small>
           </div>
         </div>
       </div>
