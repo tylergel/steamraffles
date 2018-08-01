@@ -98,7 +98,7 @@
               <div class = "col-12 no-gutters text-center">
                 <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['steamid'], '1') ) ?>">
 
-                <img style = 'min-width: 80%;' class="card-img" src='<?= $raffle['avatar_full'] ?>'; class="rounded-circle"; height = "80%"; alt="Card image cap" >
+                <img style = 'min-width: 80%;' class="card-img" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "80%"; alt="Card image cap" >
               </a>
               </div>
               <div class = "col-12 no-gutters text-center" style = "font-size: 10px">
