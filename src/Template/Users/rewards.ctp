@@ -14,7 +14,7 @@
 <div class = "container">
   <div class="panel panel-default" style = "background-color: white; margin-top: 100px">
     <div class = "panel-heading text-center"><h1>Your rewards</h1></div>
-      <a href = "https://steamcommunity.com/id/tf2token/friends/?invitegid=103582791462607769">
+      <a href = <?= $_SESSION['steam_profileurl'].'friends/?invitegid=103582791462607769'); ?>>
         <div  class = "col-md-4 offset-md-4 btn btn-primary text-center" target="_blank">Invite your friends!  Free scrap :)</div>
       </a>
     <div class="row panel-body ">
