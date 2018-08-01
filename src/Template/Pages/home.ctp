@@ -30,8 +30,10 @@
 
   <body>
     <!-- Header -->
-    <header id = "body-element" class="masthead text-white" style =" background-color:#18bc9c!important">
-      <div class = "container">
+    <header id = "body-element" class="masthead text-white" style =" background-color:#18bc9c!important;">
+      <div class="alert alert-danger" role="alert" style = "margin-top: 0px">
+          <strong>News!</strong> Scores should be properly displayed now, small design changes have been made.  More are coming, especially in the completed raffles page.  Known bugs are being fixed as well.
+      </div><div class = "container">
         <div class = "row">
           <div class = "col-md-6">
             <div class = "row">
@@ -85,25 +87,25 @@
       <h2 class="text-center" style = "font-color:white">Newest Raffles</h2>
       <div class="container">
         <?php foreach($raffles as $raffle) : ?>
-        <div class="card col-md-12" style = "background-color:#DEF2F1; ">
+        <div class="panel panel-default col-md-12" style = "background-color:#DEF2F1; ">
           <div class = "row" >
             <div class="col-md-10 no-gutters text-center" >
               <?= $this->Html->link($raffle['title'], ['controller' => 'Raffles', 'action' => 'view', $raffle['id']]); ?>
             </div>
           </div>
           <div class = "row" >
-            <div class = "col-md-2 col-3">
-              <div class = "col-md-6 col-12 no-gutters">
+            <div class = "col-md-2 col-4">
+              <div class = "col-12 no-gutters text-center">
                 <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['steamid'], '1') ) ?>">
 
-                <img style = 'max-width: 100%;' class="card-img" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "70"; alt="Card image cap" >
+                <img style = 'min-width: 80%;' class="card-img" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "80%"; alt="Card image cap" >
               </a>
               </div>
-              <div class = "col-md-12 col-12 no-gutters" style = "font-size: 10px">
+              <div class = "col-12 no-gutters text-center" style = "font-size: 10px">
                 <?= $raffle['steamname'] ?>
               </div>
             </div>
-            <div class = "row col-md-10 col-9  no-gutters">
+            <div class = "row col-md-10 col-8  no-gutters">
               <?php
                 foreach($raffle['items'] as $raff) {
                   $name = 'https://steamcommunity.com/economy/image/';
