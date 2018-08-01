@@ -8,12 +8,9 @@
             <div class="row  col-md-12">
                 <?= $this->Flash->render() ?>
                     <h5 class="col-md-12 col-12">Rules</h5>
-
             </div>
-
         </div>
     </div>
-
     <div class="panel-body row ">
         <div class="col-md-10 offset-md-1 col-10 offset-1" style="background-color: white; top: 100px;">
             <div >
@@ -58,8 +55,11 @@
                   <p class="text-center">
                     5) No scripts or bots can be used to take advantage of the website.
                 </p>
-                  <p class="text-center">
-                    6) You must be verified to create raffles. To do so you must have entered 5 raffles, have 200+ total hours played, and not be marked as a scammer.
+                <p class="text-center">
+                  6) You must be verified to create raffles. To do so you must have entered 5 raffles, have 200+ total hours played, and not be marked as a scammer.
+                </p>
+                <p class="text-center">
+                  7) Your profile must be public to claim winnings and create raffles.
                 </p>
                 <div class="row col-md-2 offset-md-5" id = 'body-element'>
                   <br>
@@ -67,11 +67,8 @@
                     <button type="submit" class="waves-effect waves-light btn">Verify me!
                   </form>
                 </div>
-
         </div>
     </div>
   </div>
-
 </body>
-
 </html>

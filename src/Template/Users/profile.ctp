@@ -1,10 +1,8 @@
 <html>
 <body   style = "background-color: #18bc9c">
-
-      <div class = "container col-md-10 offset-md-1 col-12"  style = "margin-top: 100px;">
-
+    <div class = "container"  style = "margin-top: 100px;">
     <div class = "row">
-    <div class="row col-md-10 user-menu-container square">
+    <div class="col-md-10 user-menu-container square">
         <div class="col-md-12 user-details">
             <div class="row coralbg white ">
               <div class="col-md-4 no-pad">
@@ -90,7 +88,7 @@
 
     </div>
 
-    <div class="row col-md-12 col-12" style = "padding-left: 0; padding-right: 0">
+    <div class="col-md-12 col-12 user-menu-container square">
         <div class="col-md-12 col-12 " style = " background-color: white">
             <div class="comment-wrapper">
                 <div class="panel panel-info">
