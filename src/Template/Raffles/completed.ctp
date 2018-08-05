@@ -9,11 +9,16 @@
     <br>
 <?php  foreach($rafflearray as $raffle) :  ?>
   <?php
-    if($raffle['winner']) {
-      $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$key."&steamids=".$raffle['winner']);
-      $content = json_decode($url, true);
-      $ava = $content['response']['players'][0]['avatar'];
-      $name = $content['response']['players'][0]['personaname']; ?>
+        $name = "No one";
+        $ava = NULL;
+        if(!($raffle['winner'] == 'NULL' || $raffle['winner'] == NULL)) {
+        $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$key."&steamids=".$raffle['winner']);
+        $content = json_decode($url, true);
+        $ava = $content['response']['players'][0]['avatar'];
+        $name = $content['response']['players'][0]['personaname'];
+      }
+      ?>
+
     <div id = "body-element" class="panel panel-default"  style = "background-color: white; top: 10px;">
       <div class = "panel-heading">
         <div class = "row">
@@ -41,18 +46,17 @@
           <div class = "col-md-5 col-8" style = 'background-color: #0E6DBD'>
 
                   <div class = 'row col-md-4 col-4'>
+                    <?php if($raffle['winner'] != NULL) : ?>
                     <a href =   <?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['winner'], '1') ) ?>>
-                <img src = <?= $ava ?> width = '50' height = '50'></img></a></div>
-                  <?php
-                }
-                else {
-                  echo "No one has won this raffle ):";
-                }
-              ?>
+                        <img src = <?= $ava ?> width = '50' height = '50'></img>
+                    </a>
+                  <?php endif ?>
+                </div>
+
           </div>
           <div class = "col-md-5 col-12 text-center" style = 'background-color: #0E6DBD'>
             <a href = "https://steamcommunity.com/tradeoffer/new/?partner=98405119&token=DroQxIW6">
-              <div  class = "col-md-4 offset-md-4 btn btn-primary text-center" target="_blank">Send trade offer</div>
+              <div  class = "col-md-4 btn btn-primary text-center" target="_blank" style = "min-width:100%">Send trade offer</div>
             </a>
           </div>
         </div>

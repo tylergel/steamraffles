@@ -108,6 +108,6 @@ window.onclick = function(event) {
 }
 			new gnMenu( document.getElementById( 'gn-menu' ) );
 		</script>
-	
+
 	</body>
 </html>

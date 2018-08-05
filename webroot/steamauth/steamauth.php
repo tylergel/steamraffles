@@ -9,7 +9,7 @@ function logoutbutton() {
 }
 
 function loginbutton() {
-	$button = "<a href='?login'><img src='https://i.imgur.com/oEz08m9.png'; width = '150'; ></a>";
+	$button = "<a href='./?login'><img src='https://i.imgur.com/oEz08m9.png'; width = '150'; ></a>";
 	echo $button;
 }
 
