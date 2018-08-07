@@ -589,9 +589,9 @@ class RafflesController extends AppController
 
       $key = "637D92A81FBB0C9CDCA06C1F940E8178";
       $this->set('key', $key);
-      foreach($query as $q) {
+      foreach($query as $key=>$q) {
         $que = $users->find()->where(['id' => $q['userid']])->first();
-        $q['tradeurl'] = $que['tradeurl'];
+        $query[$key]['tradeurl'] = $que['tradeurl'];
       }
       $this->set('rafflearray', $query);
     }
