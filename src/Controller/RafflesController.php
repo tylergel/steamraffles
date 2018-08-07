@@ -582,12 +582,18 @@ class RafflesController extends AppController
     }
     public function completed() {
       //Get the 10 most recent completed raffles
+      $users = TableRegistry::get('Users');
       $raffles = TableRegistry::get('Raffles');
       $query = $raffles->find()->where(['inactive' => 1])->order(['id' => 'DESC'])->limit(10)->all();
       $query = $query->toArray();
-      $this->set('rafflearray', $query);
+
       $key = "637D92A81FBB0C9CDCA06C1F940E8178";
       $this->set('key', $key);
+      foreach($query as $q) {
+        $que = $users->find()->where(['id' => $q['userid']])->first();
+        $q['tradeurl'] = $que['tradeurl'];
+      }
+      $this->set('rafflearray', $query);
     }
     public function top($data = null) {
       $users = TableRegistry::get('Users');

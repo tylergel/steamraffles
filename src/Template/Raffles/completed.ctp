@@ -55,7 +55,7 @@
 
           </div>
           <div class = "col-md-5 col-12 text-center" style = 'background-color: #0E6DBD'>
-            <a href = "https://steamcommunity.com/tradeoffer/new/?partner=98405119&token=DroQxIW6">
+            <a href = "<?= $raffle['tradeurl']; ?>">
               <div  class = "col-md-4 btn btn-primary text-center" target="_blank" style = "min-width:100%">Send trade offer</div>
             </a>
           </div>
