@@ -210,7 +210,7 @@ class RafflesController extends AppController
       $entry = TableRegistry::get('Entry');
       $raffles = TableRegistry::get('Raffles');
       $items = TableRegistry::get('Items');
-
+      $this->set('me', $me);
       //Get the raffles corresponding to the game
       if($mode == null || $mode == "all") {
         $mode = "all";

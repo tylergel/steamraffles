@@ -65,7 +65,12 @@
       <div class="card col-md-10 offset-md-1 col-10 offset-1"  style = "top: 10px;">
         <div class = "row "  style="border-style: solid; border-width: 1px;">
           <div class="col-md-4 text-center" >
-            <?= $this->Html->link($raffle['title'], ['controller' => 'Raffles', 'action' => 'view', $raffle['id']]); ?>
+            <?php if($me == NULL) : ?>
+              <?= $this->Html->link($raffle['title'], ['controller' => 'Raffles', 'action' => 'view', $raffle['id']]); ?>
+            <?php endif ?>
+            <?php if($me != NULL) : ?>
+              <?= $this->Html->link($raffle['title'], ['controller' => 'Raffles', 'action' => 'completedview', $raffle['id']]); ?>
+            <?php endif ?>
           </div>
           <div class="col-md-4 text-center" >
             Entries: <?= $raffle['entry'] ?>/ <?= $raffle['entries']; ?>
