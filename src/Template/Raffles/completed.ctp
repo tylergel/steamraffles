@@ -55,8 +55,8 @@
 
           </div>
           <div class = "col-md-5 col-12 text-center" style = 'background-color: #0E6DBD'>
-            <a href = "<?= $raffle['tradeurl']; ?>">
-              <div  class = "col-md-4 btn btn-primary text-center" target="_blank" style = "min-width:100%">Send trade offer</div>
+            <a href = "<?= $raffle['tradeurl']; ?>" target="_blank">
+              <div  class = "col-md-4 btn btn-primary text-center"  style = "min-width:100%">Send trade offer</div>
             </a>
           </div>
         </div>
