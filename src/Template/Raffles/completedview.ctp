@@ -11,6 +11,24 @@
             <?= $raffle['title'] ?>
           </h5>
         </div>
+        <div class="col-md-12 text-center border-bottom border-dark">
+          <h5>
+            <?php
+            $key = "637D92A81FBB0C9CDCA06C1F940E8178";
+            $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$key."&steamids=".$raffle['winner']);
+            $content = json_decode($url, true);
+            $ava = $content['response']['players'][0]['avatar'];
+            $usersname = $content['response']['players'][0]['personaname'];
+            $win = $content['response']['players'][0]['profileurl'];
+            ?>
+            <div class = "col-md-6 col-6">
+              <img style = 'max-width: 100%;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
+            </div>
+            <div class = "col-md-6 col-6">
+              <a href = "<?= $win ?>"><?= $usersname ?></a>
+            </div>
+          </h5>
+        </div>
       </div>
       <div class = "row  border-bottom border-dark" >
         <div class="col-md-2 offset-md-2 col-4 text-center" >
