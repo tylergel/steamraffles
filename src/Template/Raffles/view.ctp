@@ -1,11 +1,9 @@
 <html>
 <body style = "background-color: #18bc9c">
 <?= $this->Flash->render(); ?>
-<div class = "container" style = " margin-top:100px;">
-  <a target = "_blank" href="https://www.dpbolvw.net/click-8847778-13396680" >
-  <img style = "width: 100%;" src="https://www.ftjcfx.com/image-8847778-13396680" alt=""  border="0"/></a>
-</div>
-<div class = "row panel col-md-10 offset-md-1 col-12" style = "background-color: white; top: 10px">
+<?php include 'ads/banner2.html'; ?>
+<div class = "container">
+<div class = "panel panel-default col-md-12" style = "background-color: white; top: 10px">
   <div class="panel-body col-md-12 col-12" >
       <div class="col-md-12 text-center border-bottom border-dark">
           <h5>
@@ -18,10 +16,10 @@
           <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['userid']) ) ?>">
           <img style = '' class="card-img col-md-10" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "70"; alt="Card image cap" >
         </a>
-          <div class = "col-md-12 col-12 no-gutters" style = "font-size: 10px">
+          <div class = "col-md-12 col-12" style = "font-size: 10px">
             <?= $raffle['steamname'] ?>
           </div>
-          <i id = "like" class="fa fa-thumbs-up btn btn-info btn-sm" aria-hidden="true">Like this raffle</i>
+          <i id = "like" class="fa fa-thumbs-up btn btn-info btn-sm" aria-hidden="true">Like</i>
 
         </div>
         <div class="row col-md-8 col-8" >
@@ -73,7 +71,7 @@
 <div class = "panel-body col-md-12" style = "margin-top: 25px">
   <div class="col-md-12 col-12">
     <div class = "col-md-12">
-      <div class = "row col-md-12 col-12  no-gutters">
+      <div class = "row col-md-12 col-12">
           <?php foreach($raffle['entries'] as $ra) {
             $key = "637D92A81FBB0C9CDCA06C1F940E8178";
             $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$key."&steamids=".$ra['entry']);
@@ -95,7 +93,7 @@
 </div>
 </div>
 
-            <div class="panel panel-info col-md-10 offset-md-1 col-10 offset-1" style = " background-color: white; margin-top: 10px">
+            <div class="panel panel-info col-md-12 col-12" style = " background-color: white; margin-top: 10px">
               <div class="panel-heading">
                     Comments
                 </div>
@@ -173,7 +171,7 @@
                     </ul>
                 </div>
             </div>
-
+</div>
 
 </body>
 </html>
