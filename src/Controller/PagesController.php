@@ -109,6 +109,9 @@ class PagesController extends AppController
       $entry = TableRegistry::get('Entry');
       $raffles = TableRegistry::get('Raffles');
       $items = TableRegistry::get('Items');
+      $news = TableRegistry::get('News');
+      $newsObject = $news->find()->all();
+      $this->set('news', $newsObject);
       //Get the latest winner in the raffle
       $query = $raffles->find()->where(['inactive' => 1])->order(['id' => 'DESC'])->first();
       $query = $query->toArray();

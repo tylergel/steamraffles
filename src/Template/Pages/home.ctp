@@ -31,9 +31,12 @@
   <body>
     <!-- Header -->
     <header id = "body-element" class="masthead text-white" style =" background-color:#18bc9c!important;">
+      <?php foreach($news as $new) : ?>
       <div class="alert alert-danger" role="alert" style = "margin-top: 0px">
-          <strong>News!</strong> Scores should be properly displayed now, small design changes have been made.  More are coming, especially in the completed raffles page.  Known bugs are being fixed as well.
-      </div><div class = "container">
+          <strong><?= $new['title']; ?></strong> <?= $new['news'] ?>
+      </div>
+    <?php endforeach ?>
+    <div class = "container">
         <div class = "row">
           <div class = "col-md-6">
             <div class = "row">
