@@ -148,6 +148,15 @@
              ->execute();
 
        }
+       $this->loadModel('Users');
+       $userprofile = TableRegistry::get('Users');
+       $query = $userprofile->query();
+       $query->update()
+           ->set(['tradeurl' => $data['profileurl']])
+           ->where(['id' => $id])
+           ->execute();
+
+
        return $this->redirect(
 
          ['controller' => 'Users', 'action' => 'profile', $id]

@@ -490,6 +490,15 @@ class RafflesController extends AppController
       $userid = $query->id;
 
         $nor = $query->number;
+        if($query->tradeurl == NULL) {
+          $this->Flash->set('No trade url found, create one at your profile.', [
+              'element' => 'error'
+          ]);
+            return $this->redirect(
+
+              ['controller' => 'Raffles', 'action' => 'index', $mode]
+          );
+        }
         if(!$query->verified) {
           $this->Flash->set('You must be verified to create a raffle.  Check the rules for more info.', [
               'element' => 'error'

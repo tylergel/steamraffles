@@ -64,7 +64,33 @@
                 <div class="row col-md-2 offset-md-5" id = 'body-element'>
                   <br>
                   <form method = "post">
-                    <button type="submit" class="waves-effect waves-light btn">Verify me!
+                      <button type="button" class="waves-effect waves-light btn" data-toggle="modal" data-target="#myModal">Verify me!</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog  text-center">
+
+                        <!-- Modal content-->
+                        <div class="modal-content  text-center">
+                          <div class="row modal-header text-center">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h5 class="modal-title text-center">Enter trade offer url</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>To get your trade offer url, follow these steps.</p>
+                            <p>-Log into Steam Client open your Inventory.</p>
+                            <p>-Click the "Trade Offers" button on the right.</p>
+                            <p>-Click on "Who can send me Trade Offers".</p>
+                            <p>-Copy your trade offer url and place it here.</p>
+                            <input id = "tradeurl" name = "tradeurl" type = "text" placeholder = "https://steamcommunity.com/tradeoffer/new/?partner=xxx&token=xxx"></input>
+                          </div>
+                          <div class="modal-footer text-center">
+                            <button type="Submit" class="waves-effect waves-light btn" >Verify me</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
                   </form>
                 </div>
         </div>

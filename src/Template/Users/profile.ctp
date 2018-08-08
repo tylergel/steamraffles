@@ -42,6 +42,7 @@
             <div class="user-menu-content active text-center">
               <?php if($content['steamid'] == $_SESSION['steamid']) : ?>
                 <i  id = 'edit' class="fa fa-pencil-square-o" aria-hidden="true" title = "edit">Edit my profile</i>
+                <p> Trade offer url: <?= $userdata->tradeurl ?> </p>
               <?php endif ?>
                 <h3 id = 'profiletitle'>
                     <?= $userprofile->profiletitle ?>
@@ -51,6 +52,7 @@
                   <input class = 'col-md-12' type = 'text' name = 'profiletitle' value = '<?= $userprofile->profiletitle ?>'></input>
                   <textarea class = 'col-md-12' id = 'profilebody' name = 'profilebody' value='<?= $userprofile->profiledescription ?>'><?= $userprofile->profiledescription ?></textarea>
                   <button id = 'submitform' type='submit' class='col-md-12 btn btn-success green'>Save</button>
+                  <textarea class = 'col-md-12' id = 'profileurl' name = 'profileurl' value='<?= $userdata->tradeurl ?>'><?= $userdata->tradeurl ?></textarea>
                 </form>
             </div>
 
@@ -70,7 +72,7 @@
     						</div>
 
     </div>
-    <div class="row col-md-2 col-12  user-menu-container square" style = "background-color: white;">
+    <div class="col-md-2 col-12  user-menu-container square" style = "background-color: white;">
         <div class="user-menu-content" >
           <div class = "col-md-12 col-12">
             <h3 class = "text-center">

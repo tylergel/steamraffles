@@ -65,7 +65,14 @@ class AboutController extends AppController
          $json = file_get_contents('http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key='.$key.'&steamids='.$steamid.'');
          $obj = json_decode($json);
          $denied = false;
-
+         if(empty($this->request->data['profileurl'])) {
+           $this->Flash->set('Enter trade offer url', [
+               'element' => 'error'
+           ]);
+           return $this->redirect(
+             ['controller' => 'About', 'action' => 'rules']
+         );
+         }
          $users = TableRegistry::get('Users');
          $query = $users->find()->where(['steamid' => $steamid]);
          foreach ($query as $article) {
@@ -76,6 +83,7 @@ class AboutController extends AppController
            $this->Flash->set('You have not entered enough raffles', [
                'element' => 'error'
            ]);
+
          }
          $communityban = $obj->players[0]->CommunityBanned;
          $vacban = $obj->players[0]->VACBanned;
@@ -116,7 +124,7 @@ class AboutController extends AppController
          else {
            $query = $users->query();
            $query->update()
-               ->set(['verified' => '1'])
+               ->set(['verified' => '1', 'tradeurl' => $this->request->data['tradeurl']])
                ->where(['steamid' => $steamid])
                ->execute();
                $this->Flash->set('Verified!  You can now create raffles.', [
