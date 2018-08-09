@@ -62,7 +62,7 @@
               $name = 'https://steamcommunity.com/economy/image/';
               $name .= $raffl['icon'];
               $iname = $raffl['name'];
-              echo "<div class = 'col-md-1 col-2'; data-toggle='tooltip'; data-placement='top'; title='$iname';><img style = 'max-width: 100%;' src = $name></img></div>";
+              echo "<div class = 'col-md-1 col-2'; data-toggle='tooltip'; data-placement='top'; title='$iname';><img style = 'max-width: 50px;' src = $name></img></div>";
             }
           ?>
       </div>
@@ -80,7 +80,7 @@
             $usersname = $content['response']['players'][0]['personaname']; ?>
             <div class = 'col-md-1 col-2'>
               <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $ra['userid']) ) ?>">
-                 <img style = 'max-width: 100%;'  data-toggle='tooltip'; data-placement='top'; title='<?= $usersname ?>' src = <?= $ava ?>>
+                 <img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; title='<?= $usersname ?>' src = <?= $ava ?>>
                </a>
             </div>
 

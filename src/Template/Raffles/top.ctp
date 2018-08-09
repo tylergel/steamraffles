@@ -18,22 +18,21 @@
         <?php $i = 0; ?>
         <?php  foreach($toparr as $top) : $i++; ?>
                 <div class="row col-md-12 col-12">
-                  <div class = "col-1">
-                  <?= $i ?>)
-                </div>
-                  <?php 
+
+                  <?php
                     if($top['steamid']) {
                       $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$key."&steamids=".$top['steamid']);
                       $content = json_decode($url, true);
                       $ava = $content['response']['players'][0]['avatar'];
                       $persona = $content['response']['players'][0]['personaname'];
                     ?>
-                    <div class = 'col-md-3 col-11 text-center'>
+                    <div class = 'col-md-4 col-12 text-center'>
+                      <?= $i ?>)
                       <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $top['id']) ) ?>">
-                        <img src = '<?= $ava ?>' width = '100' height = '100'>
+                        <img src = '<?= $ava ?>' width = '50' height = '50'>
                       </a>
                     </div>
-                    <div class = 'col-md-8 col-12 text-center'> <?= $persona ?>'s score: <?= $top[$data] ?></div>
+                    <div class = 'col-md-8 col-12'> <?= $persona ?>'s score: <?= $top[$data] ?></div>
                     <?php } ?>
                 </div>
         <?php endforeach;  ?>

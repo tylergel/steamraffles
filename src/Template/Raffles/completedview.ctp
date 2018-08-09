@@ -25,7 +25,7 @@
               Winner:
             </div>
             <div class = "col-md-4 col-4 text-center">
-              <img style = 'max-width: 100%;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
+              <img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
             </div>
             <div class = "col-md-4 col-4 text-center">
               <a href = "<?= $win ?>"><?= $usersname ?></a>
@@ -35,7 +35,7 @@
       </div>
       <div class = "row  border-bottom border-dark" >
         <div class="col-md-2 offset-md-2 col-4 text-center" >
-          <img style = '' class="col-md-10" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "70"; alt="Card image cap" >
+          <img style = 'min-width: 50px; height: 50px;' class="col-md-10" src='<?= $raffle['avatar'] ?>'; class="rounded-circle";  alt="Card image cap" >
           <div class = "col-md-12 col-12 no-gutters" style = "font-size: 10px">
             <?= $raffle['steamname'] ?>
           </div>
@@ -82,7 +82,7 @@
               $content = json_decode($url, true);
               $ava = $content['response']['players'][0]['avatar'];
               $usersname = $content['response']['players'][0]['personaname'];
-              echo "<div class = 'col-md-1 col-2';><img style = 'max-width: 100%;'  data-toggle='tooltip'; data-placement='top'; title='$usersname' src = $ava></img></div>";
+              echo "<div class = 'col-md-1 col-2';><img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; title='$usersname' src = $ava></img></div>";
             }
             ?>
         </div>
