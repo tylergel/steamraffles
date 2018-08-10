@@ -14,7 +14,8 @@
                     <div class="user-pad text-center">
                         <h6><?= $content['personaname'] ?></h6>
                         <h6> <?= ($content['personastate'] == 0) ? "<p style = 'color: red'>Offline</p>" : "<p style = 'color: green'>Online</p> "; ?></h4>
-                        <h6>Joined: <?= $userdata->joined ?></h6>
+                          <h6>Joined: <?= $userdata->joined ?></h6>
+                          <h6>Profile link: <a href = "<?= $content['profileurl'] ?>" target = "_blank">Steam profile link</a></h6>
                     </div>
                 </div>
 
