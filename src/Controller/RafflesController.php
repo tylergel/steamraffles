@@ -216,7 +216,7 @@ class RafflesController extends AppController
         $mode = "all";
 
         if($me != null) {
-          $query = $raffles->find()->where(['steamid' => $me])->all();
+          $query = $raffles->find()->where(['steamid' => $me])->order(['inactive' => 'DESC'])->all();
         } else {
           $query = $raffles->find()->where(['inactive' => 0])->all();
         }
