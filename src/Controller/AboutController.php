@@ -55,7 +55,10 @@ class AboutController extends AppController
      }
 
      public function sponsors() {
-
+       $this->loadModel('Sponsors');
+       $sponsors = TableRegistry::get('Sponsors');
+       $allSponsors = $sponsors->find()->all();
+       $this->set('sponsors', $allSponsors);
      }
 
      public function rules() {

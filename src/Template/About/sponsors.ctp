@@ -13,14 +13,16 @@
       </div>
       <div class="panel-body row ">
           <div class="col-md-10 offset-md-1 col-10 offset-1" style="background-color: white; top: 100px;">
+            <?php foreach($sponsors as $sponsor) : ?>
               <div >
                   <p class="text-center">
-                      Greenman gaming: Great deals on the latest and hottest games.
+                    <?= $sponsor->title; ?> : <?= $sponsor->description ?>
                   </p>
                   <p id = "body-element" class="text-center">
-                    <a href="https://www.anrdoezrs.net/click-8847778-13396692" target = "_blank" class="waves-effect waves-light btn">Amazing games!
+                    <a href="<?= $sponsor->link ?>" target = "_blank" class="waves-effect waves-light btn"><?= $sponsor->linkname ?>
                   </p>
               </div>
+            <?php endforeach; ?>
           </div>
       </div>
     </div>

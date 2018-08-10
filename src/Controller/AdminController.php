@@ -31,7 +31,7 @@ use Cake\Controller\Component\FlashComponent;
  * @link https://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
  use Cake\Datasource\ConnectionManager;
-class AboutController extends AppController
+class AdminController extends AppController
 {
 
     /**
@@ -54,7 +54,7 @@ class AboutController extends AppController
       if(isset($_SESSION['steamid'])) {
         $users = TableRegistry::get('Users');
         $query = $users->find()->where(['steamid' => $_SESSION['steamid']])->first();
-        if(!$query->accepted) {
+        if(!$query->admin) {
               return $this->redirect(
                 $this->referer()
             );
@@ -64,7 +64,73 @@ class AboutController extends AppController
     }
 
      public function index() {
+       $this->loadModel('News');
+       $news = TableRegistry::get('News');
+       $allNews = $news->find()->all();
+       $this->set('news', $allNews);
 
+       $this->loadModel('Users');
+       $users = TableRegistry::get('Users');
+       $allUsers = $users->find()->order(['toclaim' => 'DESC'])->all();
+       $this->set('users', $allUsers);
+
+       $this->loadModel('Sponsors');
+       $sponsors = TableRegistry::get('Sponsors');
+       $allSponsors = $sponsors->find()->all();
+       $this->set('sponsors', $allSponsors);
+
+     }
+     public function deleteNews($id) {
+       $this->loadModel('News');
+       $comments = TableRegistry::get('News');
+       $entity = $this->News->get($id);
+       $result = $this->News->delete($entity);
+       return $this->redirect(
+
+         ['controller' => 'admin', 'action' => 'index']
+     );
+     }
+     public function addNews() {
+       if($this->request->is('post')) {
+         $this->loadModel('News');
+         $news = TableRegistry::get('News');
+         $data = $this->request->data;
+         $newsEnt = $this->News->newEntity();
+         $newsEnt->title = $data['title'];
+         $newsEnt->news = $data['news'];
+          $this->News->save($newsEnt);
+          return $this->redirect(
+
+            ['controller' => 'admin', 'action' => 'index']
+        );
+       }
+     }
+
+     public function deleteSponsor($id) {
+       $this->loadModel('Sponsors');
+       $sponsor = TableRegistry::get('Sponsors');
+       $entity = $this->Sponsors->get($id);
+       $result = $this->Sponsors->delete($entity);
+       return $this->redirect(
+
+         ['controller' => 'admin', 'action' => 'index']
+     );
+     }
+     public function addSponsor() {
+       if($this->request->is('post')) {
+         $this->loadModel('Sponsors');
+         $sponsor = TableRegistry::get('Sponsors');
+         $data = $this->request->data;
+         $sponsEnt = $this->Sponsors->newEntity();
+         $sponsEnt->title = $data['title'];
+         $sponsEnt->description = $data['description'];
+         $sponsEnt->link = $data['link'];
+         $sponsEnt->linkname = $data['linkname'];
+          $this->Sponsors->save($sponsEnt);
+          return $this->redirect(
+            ['controller' => 'admin', 'action' => 'index']
+        );
+       }
      }
 
 
