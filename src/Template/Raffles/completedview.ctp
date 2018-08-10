@@ -35,7 +35,9 @@
       </div>
       <div class = "row  border-bottom border-dark" >
         <div class="col-md-2 offset-md-2 col-4 text-center" >
-          <img style = 'min-width: 50px; height: 50px;' class="col-md-10" src='<?= $raffle['avatar'] ?>'; class="rounded-circle";  alt="Card image cap" >
+          <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['userid']) ) ?>">
+            <img style = 'min-width: 50px; height: 50px;' class="col-md-10" src='<?= $raffle['avatar'] ?>'; class="rounded-circle";  alt="Card image cap" >
+          </a>
           <div class = "col-md-12 col-12 no-gutters" style = "font-size: 10px">
             <?= $raffle['steamname'] ?>
           </div>
