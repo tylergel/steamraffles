@@ -163,23 +163,10 @@
     <!-- About Section -->
     <section class="text-white mb-0" id="about" style =" background-color:#18bc9c!important">
       <div class="container">
-        <h2 class="text-center text-uppercase text-white">News</h2>
+        <h2 class="text-center text-uppercase text-white">About us</h2>
         <div class="row">
           <div class="col-lg-12 text-center">
-            <p class="lead">Design changes are being worked on, especially on mobile. Post your ideas for changes on our steamgroup.  Lastly, we will be looking for moderators shortly.</p>
-            <small>Posted July 23rd</small>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <p class="lead">User profiles have been added.  See how you stack up against others in our community!</p>
-            <small>Posted July 23rd</small>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <p class="lead">Daily raffles are now guaranteed.  Enter the raffle, and a winner will be randomly chosen.</p>
-            <small>Posted July 23rd</small>
+            <p class="lead">Steamraffles is a legit giveaway site.  We do giveaways mostly ever day.  Win free items, and get free items for every friend you refer!</p>
           </div>
         </div>
       </div>

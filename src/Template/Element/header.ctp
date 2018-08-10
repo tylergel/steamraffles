@@ -56,6 +56,9 @@
 								<li>
 									<i class="fa fa-info-circle fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Rules',['controller' => 'About', 'action' => 'rules']); ?>
 								</li>
+								<li>
+									<i class="fa fa-info-circle fa-2x" style = "float: left; margin-top: 15px;" aria-hidden="true"></i><?= $this->Html->link('Contact Us',['controller' => 'About', 'action' => 'contact']); ?>
+								</li>
 
 							</ul>
 						</div>

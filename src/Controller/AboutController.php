@@ -53,6 +53,27 @@ class AboutController extends AppController
      public function privacies() {
 
      }
+     public function contact() {
+
+     }
+     public function mail() {
+       if($this->request->is('post')) {
+         $this->loadModel('Contact');
+         $news = TableRegistry::get('Contact');
+         $data = $this->request->data;
+         $contactEnt = $this->Contact->newEntity();
+         $contactEnt->name = $data['name'];
+         $contactEnt->email = $data['email'];
+          $contactEnt->message = $data['message'];
+          $this->Contact->save($contactEnt);
+          $this->Flash->set('Request received!  We will contact you back shortly', [
+              'element' => 'success'
+          ]);
+          return $this->redirect(
+            ['controller' => 'About', 'action' => 'contact']
+        );
+       }
+     }
 
      public function sponsors() {
        $this->loadModel('Sponsors');
