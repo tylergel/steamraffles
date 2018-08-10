@@ -15,13 +15,13 @@
       <div class="col-md-12 col-12  text-center" style="background-color: white; top: 100px;">
           <div >
               <p class="text-center">
-                  Steam Group: <a href =  "https://steamcommunity.com/groups/gamegifts" class="btn btn-primary">GameGifts</a>
+                  Steam Group: <a href =  "https://steamcommunity.com/groups/gamegifts"  target = "_blank" class="btn btn-primary">GameGifts</a>
               </p>
               <p class="text-center">
-                  Owner: <a href =  "https://steamcommunity.com/id/tf2token/" class="btn btn-primary">Legend</a>
+                  Owner: <a href =  "https://steamcommunity.com/id/tf2token/"  target = "_blank" class="btn btn-primary">Legend</a>
               </p>
               <p class="text-center">
-                  Head Admin: <a href =  "https://steamcommunity.com/id/RandomCritz/" class="btn btn-primary">RandomCritz</a>
+                  Head Admin: <a href =  "https://steamcommunity.com/id/RandomCritz/" target = "_blank" class="btn btn-primary">RandomCritz</a>
               </p>
               <p class="text-center">
                   Email: webshockinnovations@gmail.com
