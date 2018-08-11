@@ -41,7 +41,7 @@
           <div class = "col-md-6">
             <div class = "row">
               <div class = "col-md-12 text-center">
-                <h4 style = "font-size:2rem;">Welcome to Steamraffles!</h4>
+                <h1 style = "font-size:2rem;">Welcome to Steamraffles!</h1>
               </div>
             </div>
               <div class = "row">
@@ -77,7 +77,7 @@
             <div class = "col-md-12 text-center">
               <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $lateststeamid, '1') ) ?>">
 
-              <img src = <?= $latest ?> width = '50' height = '50'></img>
+              <img alt = "winner" src = <?= $latest ?> width = '50' height = '50'></img>
             </a>
             </div>
           </div>
@@ -101,7 +101,7 @@
               <div class = "col-12 no-gutters text-center">
                 <a href = "<?= $this->Url->build( array('controller' => 'users', 'action' => 'profile', $raffle['steamid'], '1') ) ?>">
 
-                <img style = 'width: 50px;' class="card-img" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "50px"; alt="Card image cap" >
+                <img alt = "<?= $raffle['steamname']; ?>" style = 'width: 50px;' class="card-img" src='<?= $raffle['avatar'] ?>'; class="rounded-circle"; height = "50px"; alt="Card image cap" >
               </a>
               </div>
               <div class = "col-12 no-gutters text-center" style = "font-size: 10px">
