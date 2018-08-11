@@ -9,10 +9,7 @@
 @font-face {
 		font-weight: normal;
 		font-style: normal;
-		font-family: 'ecoicons';
-		src: url("../fonts/ecoicons/ecoicons.eot");
-		src: url("../fonts/ecoicons/ecoicons.eot?#iefix") format("embedded-opentype"), url("../fonts/ecoicons/ecoicons.woff") format("woff"), url("../fonts/ecoicons/ecoicons.ttf") format("truetype"), url("../fonts/ecoicons/ecoicons.svg#ecoicons") format("svg");
-}
+	}
 
 /* Icomoon.com */
 
@@ -219,7 +216,7 @@ input.gn-search:focus {
 		font-weight: normal;
 		font-style: normal;
 		font-variant: normal;
-		font-family: 'ecoicons';
+		
 		line-height: 1;
 		speak: none;
 		-webkit-font-smoothing: antialiased;
