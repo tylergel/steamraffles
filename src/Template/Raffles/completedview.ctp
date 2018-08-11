@@ -22,11 +22,8 @@
             $win = $content['response']['players'][0]['profileurl'];
             ?>
             <div class - "row">
-              <div class = "col-md-6 col-6 text-center">
-                Winner:
-              </div>
-              <div class = "col-md-6 col-6 text-center">
-                <a target = "_blank" href = "<?= $win ?>"><?= $usersname ?></a>
+              <div class = "col-md-12 col-12 text-center">
+                Winner: <a target = "_blank" href = "<?= $win ?>"><?= $usersname ?></a>
               </div>
               <div class = "col-md-12 col-12 text-center">
                 <img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
