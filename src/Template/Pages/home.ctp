@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Steam Raffles is a giveaway website for steam games and items.">
     <meta name="author" content="">
   </head>
 
@@ -114,7 +114,7 @@
                   $name = 'https://steamcommunity.com/economy/image/';
                   $name .= $raff['icon'];
                   $iname = $raff['name'];
-                  echo "<div class = 'col-md-1 col-2' ;><img style = 'max-width: 100%;' data-toggle='tooltip'; data-placement='top'; title='$iname'; src = $name></img></div>";
+                  echo "<div class = 'col-md-1 col-2' ;><img alt = 'Free giveaway item' style = 'max-width: 100%;' data-toggle='tooltip'; data-placement='top'; title='$iname'; src = $name></img></div>";
                 }
               ?>
             </div>

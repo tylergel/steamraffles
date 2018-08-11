@@ -38,6 +38,7 @@ $cakeDescription = 'The best raffling site';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <meta name="mediacpmpl-site-verification" content="faf5ae103686c70e21d36206bc782257">
+  <meta name="description" content="Steam Raffles is a giveaway website for steam games and items.">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121073556-1"></script>
 <script>
