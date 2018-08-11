@@ -56,6 +56,16 @@
 </form>
 </div>
 
+<?php foreach($contact as $con) : ?>
+<div class = "row" style = "background-color: teal; margin-top: 10px">
+<?= $con->name ?>
+<br>
+<?= $con->email ?>
+<br>
+<?= $con->message ?>
+</div>
+<?php endforeach ?>
+
 
 </div>
 </body>

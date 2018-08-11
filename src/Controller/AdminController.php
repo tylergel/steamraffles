@@ -79,6 +79,11 @@ class AdminController extends AppController
        $allSponsors = $sponsors->find()->all();
        $this->set('sponsors', $allSponsors);
 
+       $this->loadModel('Contact');
+       $contact = TableRegistry::get('Contact');
+       $allContact = $contact->find()->all();
+       $this->set('contact', $allContact);
+
      }
      public function deleteNews($id) {
        $this->loadModel('News');

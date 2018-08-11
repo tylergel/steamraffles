@@ -28,7 +28,7 @@
               <img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
             </div>
             <div class = "col-md-4 col-4 text-center">
-              <a href = "<?= $win ?>"><?= $usersname ?></a>
+              <a target = "_blank" href = "<?= $win ?>"><?= $usersname ?></a>
             </div>
           </h5>
         </div>
