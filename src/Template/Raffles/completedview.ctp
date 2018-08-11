@@ -25,11 +25,12 @@
               Winner:
             </div>
             <div class = "col-md-4 col-4 text-center">
-              <img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
-            </div>
-            <div class = "col-md-4 col-4 text-center">
               <a target = "_blank" href = "<?= $win ?>"><?= $usersname ?></a>
             </div>
+            <div class = "col-md-4 col-4 text-center">
+              <img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
+            </div>
+
           </h5>
         </div>
       </div>
