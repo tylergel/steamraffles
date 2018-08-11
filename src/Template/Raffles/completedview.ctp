@@ -11,7 +11,7 @@
             <?= $raffle['title'] ?>
           </h5>
         </div>
-        <div class="col-md-12 text-center border-bottom border-dark">
+        <div class="row col-md-12 text-center border-bottom border-dark">
           <h5>
             <?php
             $key = "637D92A81FBB0C9CDCA06C1F940E8178";
@@ -21,13 +21,13 @@
             $usersname = $content['response']['players'][0]['personaname'];
             $win = $content['response']['players'][0]['profileurl'];
             ?>
-            <div class = "col-md-4 col-4 text-center">
+            <div class = "col-md-6 col-6 text-center">
               Winner:
             </div>
-            <div class = "col-md-4 col-4 text-center">
+            <div class = "col-md-6 col-6 text-center">
               <a target = "_blank" href = "<?= $win ?>"><?= $usersname ?></a>
             </div>
-            <div class = "col-md-4 col-4 text-center">
+            <div class = "col-md-12 col-12 text-center">
               <img style = 'max-width: 50px;'  data-toggle='tooltip'; data-placement='top'; src = <?= $ava ?>></img>
             </div>
 
