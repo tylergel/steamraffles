@@ -166,7 +166,7 @@
         <h2 class="text-center text-uppercase text-white">About us</h2>
         <div class="row">
           <div class="col-lg-12 text-center">
-            <p class="lead">Steamraffles is a legit giveaway site.  We do giveaways mostly ever day.  Win free items, and get free items for every friend you refer!</p>
+            <p class="lead">Steam raffles is a legit giveaway site.  We do giveaways mostly ever day.  Win free items, and get free items for every friend you refer!  Steam raffles has been doing giveaways since summer of 2018!</p>
           </div>
         </div>
       </div>
