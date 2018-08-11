@@ -43,6 +43,9 @@
               <div class = "col-md-12 text-center">
                 <h1 style = "font-size:2rem;">Welcome to Steamraffles!</h1>
               </div>
+              <div class = "col-md-12 text-center">
+                <h1 style = "font-size:1.3rem;">TF2 and CSGO giveaways</h1>
+              </div>
             </div>
               <div class = "row">
                 <div class = "col-md-12 text-center">
@@ -166,7 +169,7 @@
         <h2 class="text-center text-uppercase text-white">About us</h2>
         <div class="row">
           <div class="col-lg-12 text-center">
-            <p class="lead">Steam raffles is a legit giveaway site.  We do giveaways mostly ever day.  Win free items, and get free items for every friend you refer!  Steam raffles has been doing giveaways since summer of 2018!</p>
+            <p class="lead">Steam raffles is a legit giveaway site.  We do giveaways mostly ever day.  Win free items, and get free items for every friend you refer!  Steam raffles has been doing giveaways since summer of 2018!  Our giveaways are on Team Fortress 2, Counter Strike, and more games!  We will be doing giveaways on games other than tf2 and csgo in the future.</p>
           </div>
         </div>
       </div>
