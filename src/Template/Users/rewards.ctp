@@ -1,5 +1,6 @@
 <html>
 <body style = "background-color: #18bc9c">
+  <?php include 'ads/banner1.html'; ?>
 <?php if(!isset($_GET['link'])) : ?>
 <?php if($private) : ?>
   <div class="alert alert-danger" role="alert" style = "margin-top: 100px">

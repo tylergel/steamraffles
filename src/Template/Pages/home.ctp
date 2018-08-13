@@ -90,6 +90,7 @@
 
     <!-- Show 3 newest raffles -->
     <section id = "body-element" class="portfolio" id="portfolio" style = 'background-color:white;'>
+      <?php include 'ads/banner2.html'; ?>
       <h2 class="text-center" style = "font-color:white">Newest Raffles</h2>
       <div class="container">
         <?php foreach($raffles as $raffle) : ?>

@@ -1,7 +1,7 @@
 <html>
 <body style = "background-color: #18bc9c">
 <?= $this->Flash->render(); ?>
-<?php include 'ads/banner2.html'; ?>
+<?php include 'ads/banner1.html'; ?>
 <div class = "container">
   <div class="panel panel-defaul col-md-12 col-12" style = "background-color: white; top: 10px;">
     <div class = "panel-body col-md-12">

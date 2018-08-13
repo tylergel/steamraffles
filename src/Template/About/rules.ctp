@@ -1,6 +1,8 @@
 <html>
 <?= $this->Flash->render();  ?>
 <body style = "background-color: #18bc9c">
+  <?php include 'ads/banner1.html'; ?>
+  <?php include 'ads/banner2.html'; ?>
   <div class = "container">
   <div class = "panel panel-default">
     <div class="panel-heading row " style=" text-decoration: underline;">
