@@ -19,7 +19,7 @@
                     <?= $sponsor->title; ?> : <?= $sponsor->description ?>
                   </p>
                   <p id = "body-element" class="text-center">
-                    <a href="<?= $sponsor->link ?>" target = "_blank" class="waves-effect waves-light btn"><?= $sponsor->linkname ?>
+                    <a href="<?= $sponsor->link ?>" target = "_blank" class="waves-effect waves-light btn"><?= $sponsor->linkname ?></a>
                   </p>
               </div>
             <?php endforeach; ?>
