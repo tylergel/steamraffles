@@ -1,5 +1,6 @@
 <html>
 <?php include 'ads/banner1.html'; ?>
+<?php include 'ads/popads.js'; ?>
 <body style = "background-color: #18bc9c">
 <div class = "container">
     <div id = "body-element" class="row panel panel-default text-center"  style = "background-color: white; top: 10px;">
