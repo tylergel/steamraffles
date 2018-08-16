@@ -1,5 +1,9 @@
 <!-- PopAds.net Popunder Code for steamraffles.com -->
 <script type="text/javascript" data-cfasync="false">
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+}
+else {
 /*<![CDATA[/* */
   var _pop = _pop || [];
   _pop.push(['siteId', 2719302]);
@@ -21,5 +25,6 @@
     s.parentNode.insertBefore(pa, s);
   })();
 /*]]>/* */
+}
 </script>
 <!-- PopAds.net Popunder Code End -->
