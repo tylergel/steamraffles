@@ -8,7 +8,7 @@ else {
   var _pop = _pop || [];
   _pop.push(['siteId', 2719302]);
   _pop.push(['minBid', 0]);
-  _pop.push(['popundersPerIP', 4]);
+  _pop.push(['popundersPerIP', 10]);
   _pop.push(['delayBetween', 0]);
   _pop.push(['default', false]);
   _pop.push(['defaultPerDay', 0]);
