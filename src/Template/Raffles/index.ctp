@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php include 'ads/popads.js'; ?>
 </head>
 <?= $this->Flash->render();  ?>
 <body   style = "background: url('<?= $this->Url->image($mode . '.png'); ?>') no-repeat center center fixed;

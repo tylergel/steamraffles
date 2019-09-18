@@ -17,13 +17,7 @@ $cakeDescription = 'The best raffling site';
 <!DOCTYPE html>
 <html>
 <head>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-7580925675642428",
-      enable_page_level_ads: true
-    });
-  </script>
+  
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
